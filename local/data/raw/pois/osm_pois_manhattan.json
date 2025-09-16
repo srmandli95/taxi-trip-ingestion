@@ -1,0 +1,2415 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.8 e802775f",
+  "osm3s": {
+    "timestamp_osm_base": "2025-09-11T10:49:58Z",
+    "timestamp_areas_base": "2025-09-11T05:00:22Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 166878947,
+  "lat": 40.7024496,
+  "lon": -74.0055028,
+  "tags": {
+    "amenity": "ferry_terminal",
+    "ferry": "yes",
+    "name": "Pier 11 / Wall St. Terminal",
+    "network": "East River, Astoria, South Brooklyn, Rockaway (NYC Ferry), Highlands, Atlantic Highlands, Sandy Hook Beach (Seastreak), IKEA Express (Water Taxi), Port Liberte, Hoboken, Paulus Hook, Port Imperial Weehawken (NY Waterway)",
+    "operator": "NYC Ferry/Hornblower, New York Water Taxi, NY Waterway, Seastreak",
+    "public_transport": "stop_position"
+  }
+},
+{
+  "type": "node",
+  "id": 357621192,
+  "lat": 40.8465626,
+  "lon": -73.9381268,
+  "tags": {
+    "addr:city": "New York",
+    "addr:housenumber": "4140",
+    "addr:postcode": "10033",
+    "addr:state": "NY",
+    "addr:street": "Broadway",
+    "air_conditioning": "yes",
+    "amenity": "theatre",
+    "ele": "61",
+    "gnis:feature_id": "2083791",
+    "name": "United Palace",
+    "website": "https://www.unitedpalace.org/",
+    "wikidata": "Q7889018",
+    "wikipedia": "en:United Palace"
+  }
+},
+{
+  "type": "node",
+  "id": 368051456,
+  "lat": 40.7741284,
+  "lon": -73.9841309,
+  "tags": {
+    "addr:state": "NY",
+    "amenity": "theatre",
+    "ele": "21",
+    "gnis:feature_id": "2044314",
+    "name": "Clark Studio Theater",
+    "source": "USGS Geonames",
+    "website": "http://www.lincolncenter.org/venue/clark-studio-theater",
+    "wheelchair": "yes",
+    "wikidata": "Q56668928"
+  }
+},
+{
+  "type": "node",
+  "id": 368051467,
+  "lat": 40.7300861,
+  "lon": -73.9921313,
+  "tags": {
+    "addr:state": "NY",
+    "amenity": "theatre",
+    "gnis:feature_id": "2072038",
+    "name": "Astor Place Opera House"
+  }
+},
+{
+  "type": "node",
+  "id": 368051495,
+  "lat": 40.7631571,
+  "lon": -73.9559715,
+  "tags": {
+    "addr:state": "NY",
+    "amenity": "theatre",
+    "ele": "10",
+    "gnis:feature_id": "2042645",
+    "name": "Caspary Auditorium",
+    "source": "USGS Geonames"
+  }
+},
+{
+  "type": "node",
+  "id": 368051619,
+  "lat": 40.7589003,
+  "lon": -73.9846166,
+  "tags": {
+    "addr:city": "New York",
+    "addr:housenumber": "1564",
+    "addr:state": "NY",
+    "addr:street": "Broadway",
+    "amenity": "theatre",
+    "ele": "15",
+    "gnis:feature_id": "2083222",
+    "name": "Palace Theater",
+    "source": "USGS Geonames",
+    "wikidata": "Q3360756",
+    "wikipedia": "en:Palace Theatre (New York City)"
+  }
+},
+{
+  "type": "node",
+  "id": 368051660,
+  "lat": 40.7581985,
+  "lon": -73.9895564,
+  "tags": {
+    "addr:state": "NY",
+    "amenity": "theatre",
+    "ele": "12",
+    "gnis:feature_id": "2083203",
+    "name": "Second Stage Theater",
+    "source": "USGS Geonames",
+    "wikidata": "Q7443561"
+  }
+},
+{
+  "type": "node",
+  "id": 368051665,
+  "lat": 40.7439485,
+  "lon": -74.0015120,
+  "tags": {
+    "addr:state": "NY",
+    "amenity": "theatre",
+    "ele": "5",
+    "gnis:feature_id": "2083018",
+    "name": "Atlantic Theater",
+    "website": "https://atlantictheater.org/",
+    "wikidata": "Q2869405",
+    "wikipedia": "en:Atlantic Theater Company"
+  }
+},
+{
+  "type": "node",
+  "id": 368051668,
+  "lat": 40.7352914,
+  "lon": -73.9894585,
+  "tags": {
+    "addr:state": "NY",
+    "amenity": "theatre",
+    "ele": "12",
+    "gnis:feature_id": "2083062",
+    "name": "Daryl Roth Theater",
+    "source": "USGS Geonames",
+    "wikidata": "Q38251076"
+  }
+},
+{
+  "type": "node",
+  "id": 368051674,
+  "lat": 40.7425000,
+  "lon": -74.0011111,
+  "tags": {
+    "addr:state": "NY",
+    "amenity": "theatre",
+    "ele": "6",
+    "gnis:feature_id": "2083009",
+    "name": "Joyce Theatre",
+    "source": "USGS Geonames",
+    "wikidata": "Q3187238"
+  }
+},
+{
+  "type": "node",
+  "id": 368051679,
+  "lat": 40.7330556,
+  "lon": -73.9883333,
+  "tags": {
+    "addr:state": "NY",
+    "amenity": "theatre",
+    "ele": "11",
+    "gnis:feature_id": "2082982",
+    "name": "Variety Arts Theatre",
+    "source": "USGS Geonames",
+    "wikidata": "Q45107588"
+  }
+},
+{
+  "type": "node",
+  "id": 368051684,
+  "lat": 40.7302778,
+  "lon": -74.0016667,
+  "tags": {
+    "addr:state": "NY",
+    "amenity": "theatre",
+    "ele": "6",
+    "gnis:feature_id": "2080760",
+    "name": "Minetta Lane Theatre",
+    "source": "USGS Geonames",
+    "wikidata": "Q39046743"
+  }
+},
+{
+  "type": "node",
+  "id": 368051690,
+  "lat": 40.8102679,
+  "lon": -73.9627553,
+  "tags": {
+    "addr:state": "NY",
+    "amenity": "theatre",
+    "ele": "37",
+    "gnis:feature_id": "2079074",
+    "name": "Minor Latham Playhouse",
+    "source": "USGS Geonames"
+  }
+},
+{
+  "type": "node",
+  "id": 368052754,
+  "lat": 40.7804903,
+  "lon": -73.9811314,
+  "tags": {
+    "addr:city": "New York",
+    "addr:housenumber": "2124",
+    "addr:state": "NY",
+    "addr:street": "Broadway",
+    "air_conditioning": "yes",
+    "amenity": "theatre",
+    "ele": "23",
+    "gnis:feature_id": "2083395",
+    "heritage": "yes",
+    "historic": "building",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/b/b1/Beacon_Theater_NYC_2003.jpg",
+    "level": "0",
+    "name": "Beacon Theater",
+    "operator": "MSG Entertainment",
+    "phone": "+1-212-465-6000",
+    "source": "USGS Geonames",
+    "website": "https://www.msg.com/beacon-theatre/",
+    "wikidata": "Q264186",
+    "wikipedia": "en:Beacon Theatre (New York City)"
+  }
+},
+{
+  "type": "node",
+  "id": 368052761,
+  "lat": 40.7752346,
+  "lon": -73.9829549,
+  "tags": {
+    "addr:city": "New York",
+    "addr:housenumber": "129",
+    "addr:postcode": "10023",
+    "addr:state": "NY",
+    "addr:street": "West 67th Street",
+    "air_conditioning": "yes",
+    "amenity": "theatre",
+    "ele": "22",
+    "gnis:feature_id": "2083344",
+    "name": "Merkin Concert Hall",
+    "operator": "Kaufman Music Center",
+    "phone": "+1 212 501-3330",
+    "source": "USGS Geonames",
+    "theatre:genre": "chamber_music",
+    "website": "https://www.kaufmanmusiccenter.org/mch",
+    "wikidata": "Q6819637"
+  }
+},
+{
+  "type": "node",
+  "id": 368052764,
+  "lat": 40.8091529,
+  "lon": -73.9510960,
+  "tags": {
+    "addr:state": "NY",
+    "amenity": "theatre",
+    "ele": "8",
+    "gnis:feature_id": "2083691",
+    "name": "Pabst Concert Hall",
+    "source": "USGS Geonames"
+  }
+},
+{
+  "type": "node",
+  "id": 368052774,
+  "lat": 40.8288889,
+  "lon": -73.9436111,
+  "tags": {
+    "addr:state": "NY",
+    "amenity": "theatre",
+    "ele": "36",
+    "gnis:feature_id": "2083672",
+    "name": "Dance Theatre of Harlem",
+    "source": "USGS Geonames"
+  }
+},
+{
+  "type": "node",
+  "id": 368052784,
+  "lat": 40.8166549,
+  "lon": -73.9422704,
+  "tags": {
+    "addr:state": "NY",
+    "amenity": "theatre",
+    "ele": "9",
+    "gnis:feature_id": "2083747",
+    "name": "Renaissance Theater (historical)",
+    "source": "USGS Geonames"
+  }
+},
+{
+  "type": "node",
+  "id": 368052787,
+  "lat": 40.8416764,
+  "lon": -73.9415796,
+  "tags": {
+    "addr:state": "NY",
+    "amenity": "theatre",
+    "ele": "52",
+    "gnis:feature_id": "2083860",
+    "name": "Alumni Auditorium",
+    "source": "USGS Geonames"
+  }
+},
+{
+  "type": "node",
+  "id": 368052821,
+  "lat": 40.8650000,
+  "lon": -73.9277778,
+  "tags": {
+    "addr:state": "NY",
+    "amenity": "theatre",
+    "ele": "9",
+    "gnis:feature_id": "2099784",
+    "name": "Alpine Theatre",
+    "source": "USGS Geonames",
+    "wikidata": "Q45104845"
+  }
+},
+{
+  "type": "node",
+  "id": 368053954,
+  "lat": 40.7735030,
+  "lon": -73.9825787,
+  "tags": {
+    "addr:city": "New York",
+    "addr:state": "NY",
+    "amenity": "theatre",
+    "ele": "22",
+    "gnis:feature_id": "2044300",
+    "name": "Alice Tully Hall",
+    "source": "http://en.wikipedia.org/wiki/Alice_Tully_Hall",
+    "theatre:type": "concert_hall",
+    "wheelchair": "limited",
+    "wikidata": "Q3846032"
+  }
+},
+{
+  "type": "node",
+  "id": 369043780,
+  "lat": 40.7351534,
+  "lon": -73.9729007,
+  "tags": {
+    "addr:state": "NY",
+    "aeroway": "aerodrome",
+    "ele": "0",
+    "gnis:feature_id": "978177",
+    "iata": "NYS",
+    "name": "New York Skyports Incorporated Seaplane Base",
+    "wikidata": "Q10860385"
+  }
+},
+{
+  "type": "node",
+  "id": 701654214,
+  "lat": 40.7005491,
+  "lon": -74.0130260,
+  "tags": {
+    "alt_name": "South Ferry Terminal",
+    "amenity": "ferry_terminal",
+    "ferry": "yes",
+    "name": "Whitehall",
+    "public_transport": "stop_position",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 701654537,
+  "lat": 40.7008035,
+  "lon": -74.0116105,
+  "tags": {
+    "addr:city": "New York",
+    "addr:postcode": "10004",
+    "addr:state": "NY",
+    "amenity": "ferry_terminal",
+    "ferry": "yes",
+    "name": "Battery Maritime Building",
+    "public_transport": "station"
+  }
+},
+{
+  "type": "node",
+  "id": 1437051302,
+  "lat": 40.7313641,
+  "lon": -73.9636871,
+  "tags": {
+    "amenity": "ferry_terminal",
+    "bicycle": "yes",
+    "ferry": "yes",
+    "foot": "yes",
+    "name": "India Street/Greenpoint",
+    "network": "NYC Ferry",
+    "note": "Construction expected to last until September 2022",
+    "operator": "Lendlease",
+    "public_transport": "stop_position",
+    "start_date": "2022-09",
+    "website": "https://www.lendlease.com/us/media-center/lendlease-responds/ferry-service-anticipated-to-resume-in-september-2022/"
+  }
+},
+{
+  "type": "node",
+  "id": 1437051378,
+  "lat": 40.7435089,
+  "lon": -73.9710005,
+  "tags": {
+    "amenity": "ferry_terminal",
+    "cargo": "passengers;bicycle",
+    "ferry": "yes",
+    "name": "East 34th Street/Midtown",
+    "public_transport": "stop_position",
+    "wheelchair": "yes",
+    "wikidata": "Q5327624",
+    "wikipedia": "en:East 34th Street Ferry Landing"
+  }
+},
+{
+  "type": "node",
+  "id": 1752822408,
+  "lat": 40.7580630,
+  "lon": -73.9862053,
+  "tags": {
+    "addr:city": "New York",
+    "addr:housenumber": "1515",
+    "addr:state": "NY",
+    "addr:street": "Broadway",
+    "amenity": "theatre",
+    "name": "Minskoff Theatre",
+    "start_date": "1973",
+    "website": "http://minskofftheatre.com/",
+    "wikidata": "Q3062716",
+    "wikipedia": "en:Minskoff Theatre"
+  }
+},
+{
+  "type": "node",
+  "id": 1752843998,
+  "lat": 40.7558962,
+  "lon": -73.9849328,
+  "tags": {
+    "addr:city": "New York",
+    "addr:country": "US",
+    "addr:housenumber": "124",
+    "addr:state": "NY",
+    "addr:street": "West 43rd Street",
+    "amenity": "theatre",
+    "name": "Stephen Sondheim Theatre",
+    "old_name": "Henry Miller's Theatre",
+    "start_date": "1918",
+    "wikidata": "Q7610570",
+    "wikipedia": "en:Stephen Sondheim Theatre"
+  }
+},
+{
+  "type": "node",
+  "id": 1948123002,
+  "lat": 40.7629935,
+  "lon": -73.9842271,
+  "tags": {
+    "amenity": "theatre",
+    "cuisine": "asian",
+    "genre": "cabaret",
+    "lgbtq": "welcome",
+    "name": "Lucky Cheng's",
+    "website": "http://www.luckychengsnewyork.com",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 2044048263,
+  "lat": 40.7028560,
+  "lon": -74.0172629,
+  "tags": {
+    "amenity": "ferry_terminal",
+    "ferry": "yes",
+    "name": "Battery Park",
+    "operator": "Statue Cruises",
+    "public_transport": "stop_position"
+  }
+},
+{
+  "type": "node",
+  "id": 2114017599,
+  "lat": 40.7423423,
+  "lon": -73.9917105,
+  "tags": {
+    "amenity": "bus_station",
+    "bench": "no",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "West 23rd Street & 6th Avenue",
+    "public_transport": "station",
+    "route_ref": "M23",
+    "shelter": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 2405699093,
+  "lat": 40.6932682,
+  "lon": -74.0152945,
+  "tags": {
+    "amenity": "ferry_terminal",
+    "ferry": "yes",
+    "name:de": "Gouverneursinsel",
+    "name:es": "Isla de los gobernadores",
+    "name:fr": "Île des gouverneurs",
+    "name:pt": "Ilha dos governadores",
+    "public_transport": "station",
+    "website": "https://govisland.com/info/ferry"
+  }
+},
+{
+  "type": "node",
+  "id": 2483139540,
+  "lat": 40.7606764,
+  "lon": -73.9974330,
+  "tags": {
+    "addr:housenumber": "555",
+    "addr:postcode": "10036",
+    "addr:street": "West 42nd Street",
+    "amenity": "theatre",
+    "branch": "Hell's Kitchen",
+    "name": "Upright Citizens Brigade Theatre",
+    "phone": "+1-212-366-9176",
+    "theatre:genre": "comedy",
+    "website": "https://hellskitchen.ucbtheatre.com",
+    "wikidata": "Q5489525"
+  }
+},
+{
+  "type": "node",
+  "id": 2493233170,
+  "lat": 40.7536123,
+  "lon": -73.9931889,
+  "tags": {
+    "addr:city": "New York",
+    "addr:housenumber": "312",
+    "addr:postcode": "10018",
+    "addr:street": "West 36th Street",
+    "amenity": "theatre",
+    "name": "Abingdon Theatre Complex",
+    "phone": "+1 212 868-2055"
+  }
+},
+{
+  "type": "node",
+  "id": 2494163036,
+  "lat": 40.7290440,
+  "lon": -73.9892596,
+  "tags": {
+    "alt_name": "Brickspot Comedy",
+    "amenity": "theatre",
+    "name": "St. Mark's Comedy Club",
+    "phone": "+1-212-254-3693",
+    "theatre:genre": "stand_up_comedy",
+    "website": "https://www.brickspotcomedy.com"
+  }
+},
+{
+  "type": "node",
+  "id": 2517042190,
+  "lat": 40.7495539,
+  "lon": -74.0016225,
+  "tags": {
+    "addr:city": "New York",
+    "addr:housenumber": "441",
+    "addr:postcode": "10001",
+    "addr:street": "West 26th Street",
+    "amenity": "theatre",
+    "name": "Hudson Guild Theatre",
+    "operator": "Hudson Guild",
+    "phone": "+1 212 760-9837",
+    "website": "https://hudsonguild.org/index.php/arts-events/theatre-productions"
+  }
+},
+{
+  "type": "node",
+  "id": 2547041131,
+  "lat": 40.7248886,
+  "lon": -73.9926111,
+  "tags": {
+    "addr:housenumber": "308",
+    "addr:postcode": "10012",
+    "addr:street": "Bowery",
+    "alt_name": "Bowery Poetry",
+    "amenity": "theatre",
+    "name": "Duane Park",
+    "phone": "+1-212-732-5555",
+    "theatre:genre": "burlesque",
+    "website": "https://www.duaneparknyc.com"
+  }
+},
+{
+  "type": "node",
+  "id": 2547205417,
+  "lat": 40.7327227,
+  "lon": -73.9882473,
+  "tags": {
+    "addr:city": "New York",
+    "addr:housenumber": "136",
+    "addr:postcode": "10003",
+    "addr:state": "NY",
+    "addr:street": "East 13th Street",
+    "amenity": "theatre",
+    "contact:facebook": "classicstagecompany",
+    "contact:instagram": "classicstage",
+    "email": "boxoffice@classicstage.org",
+    "name": "Classic Stage Company",
+    "phone": "+1 212 677 4210",
+    "website": "https://www.classicstage.org/",
+    "wikidata": "Q5128221",
+    "wikipedia": "en:Classic Stage Company"
+  }
+},
+{
+  "type": "node",
+  "id": 2550012213,
+  "lat": 40.7284254,
+  "lon": -73.9998816,
+  "tags": {
+    "addr:housenumber": "158",
+    "addr:postcode": "10012",
+    "addr:state": "NY",
+    "addr:street": "Bleecker Street",
+    "amenity": "theatre",
+    "name": "Le Poisson Rouge",
+    "name:en": "Le Poisson Rouge",
+    "website": "https://lpr.com/",
+    "wikidata": "Q3225754"
+  }
+},
+{
+  "type": "node",
+  "id": 2554956151,
+  "lat": 40.7195856,
+  "lon": -73.9908359,
+  "tags": {
+    "addr:city": "New York",
+    "addr:housenumber": "62",
+    "addr:postcode": "10002",
+    "addr:state": "NY",
+    "addr:street": "Delancey Street",
+    "amenity": "bus_station",
+    "bus": "yes",
+    "name": "D3 Busline",
+    "phone": "(646) 210-8928",
+    "public_transport": "station"
+  }
+},
+{
+  "type": "node",
+  "id": 2562374829,
+  "lat": 40.7349099,
+  "lon": -73.9882699,
+  "tags": {
+    "addr:housenumber": "17",
+    "addr:postcode": "10003",
+    "addr:street": "Irving Place",
+    "amenity": "theatre",
+    "name": "Irving Plaza",
+    "website": "http://venue.irvingplaza.com",
+    "wikidata": "Q3154621"
+  }
+},
+{
+  "type": "node",
+  "id": 2563930317,
+  "lat": 40.7180547,
+  "lon": -74.0028387,
+  "tags": {
+    "addr:city": "New York",
+    "addr:housenumber": "380",
+    "addr:postcode": "10013",
+    "addr:state": "NY",
+    "addr:street": "Broadway",
+    "amenity": "theatre",
+    "email": "info@accesstheater.com",
+    "name": "Access Theater",
+    "phone": "+1-212-966-1047",
+    "start_date": "1992",
+    "website": "https://accesstheater.com"
+  }
+},
+{
+  "type": "node",
+  "id": 2567558455,
+  "lat": 40.7156623,
+  "lon": -73.9940231,
+  "tags": {
+    "addr:housenumber": "103",
+    "addr:postcode": "10002",
+    "addr:street": "Canal Street",
+    "amenity": "bus_station",
+    "bus": "yes",
+    "name": "Wanda Coach",
+    "phone": "+1 917 717 4666",
+    "public_transport": "station",
+    "website": "https://www.wandacoach.com"
+  }
+},
+{
+  "type": "node",
+  "id": 2567566950,
+  "lat": 40.7152783,
+  "lon": -73.9838931,
+  "tags": {
+    "addr:city": "New York",
+    "addr:housenumber": "466",
+    "addr:postcode": "10002",
+    "addr:state": "NY",
+    "addr:street": "Grand Street",
+    "amenity": "theatre",
+    "name": "Henry Street Playhouse"
+  }
+},
+{
+  "type": "node",
+  "id": 2592130018,
+  "lat": 40.7818403,
+  "lon": -73.9807136,
+  "tags": {
+    "addr:city": "New York",
+    "addr:housenumber": "2160",
+    "addr:postcode": "10024",
+    "addr:state": "NY",
+    "addr:street": "Broadway",
+    "amenity": "theatre",
+    "name": "WP Theater",
+    "phone": "+1-929-458-0636",
+    "website": "https://wptheater.org"
+  }
+},
+{
+  "type": "node",
+  "id": 2678466841,
+  "lat": 40.7576451,
+  "lon": -73.9864422,
+  "tags": {
+    "addr:city": "New York",
+    "addr:housenumber": "1515",
+    "addr:state": "NY",
+    "addr:street": "Broadway",
+    "amenity": "theatre",
+    "name": "PlayStation Theater",
+    "start_date": "2015",
+    "website": "https://www.playstationtheater.com/",
+    "wikidata": "Q4896607",
+    "wikipedia": "en:Palladium Times Square"
+  }
+},
+{
+  "type": "node",
+  "id": 2703424343,
+  "lat": 40.7487769,
+  "lon": -73.9953514,
+  "tags": {
+    "addr:city": "New York",
+    "addr:housenumber": "254",
+    "addr:postcode": "10001",
+    "addr:street": "West 29th Street",
+    "amenity": "theatre",
+    "name": "Magnet Theater",
+    "start_date": "2005",
+    "website": "https://magnettheater.com/",
+    "wikidata": "Q6731444",
+    "wikipedia": "en:Magnet Theater"
+  }
+},
+{
+  "type": "node",
+  "id": 2709878693,
+  "lat": 40.7601215,
+  "lon": -73.9929292,
+  "tags": {
+    "addr:housenumber": "424",
+    "addr:postcode": "10036",
+    "addr:state": "NY",
+    "addr:street": "West 44th Street",
+    "amenity": "theatre",
+    "ele": "10",
+    "gnis:feature_id": "2083193",
+    "name": "New Dramatists Theater",
+    "source": "USGS Geonames"
+  }
+},
+{
+  "type": "node",
+  "id": 2717543654,
+  "lat": 40.7560233,
+  "lon": -73.9845629,
+  "tags": {
+    "addr:city": "New York",
+    "addr:housenumber": "123",
+    "addr:postcode": "10036",
+    "addr:state": "NY",
+    "addr:street": "West 43rd Street",
+    "amenity": "theatre",
+    "ele": "17",
+    "gnis:feature_id": "2083212",
+    "name": "The Town Hall",
+    "ref:nrhp": "80002724",
+    "start_date": "1921",
+    "wheelchair": "yes",
+    "wikidata": "Q1634948",
+    "wikipedia": "en:The Town Hall"
+  }
+},
+{
+  "type": "node",
+  "id": 2796607378,
+  "lat": 40.8081018,
+  "lon": -73.9635058,
+  "tags": {
+    "addr:housenumber": "2962",
+    "addr:postcode": "10027",
+    "addr:street": "Broadway",
+    "amenity": "theatre",
+    "name": "Miller Theatre",
+    "wikidata": "Q6859250"
+  }
+},
+{
+  "type": "node",
+  "id": 2902930629,
+  "lat": 40.7560729,
+  "lon": -74.0028903,
+  "tags": {
+    "addr:city": "New York",
+    "addr:postcode": "10001",
+    "addr:state": "NY",
+    "addr:street": "West 34th Street",
+    "amenity": "bus_station",
+    "building": "hut",
+    "bus": "yes",
+    "name": "Megabus",
+    "public_transport": "station",
+    "source": "observation",
+    "toilets:wheelchair": "no",
+    "website": "https://us.megabus.com/",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 2920101574,
+  "lat": 40.7594480,
+  "lon": -73.9926202,
+  "tags": {
+    "addr:city": "New York",
+    "addr:housenumber": "407",
+    "addr:postcode": "10036",
+    "addr:street": "West 43rd Street",
+    "amenity": "theatre",
+    "name": "Westside Theatre",
+    "start_date": "1976",
+    "website": "http://www.westsidetheatre.com/",
+    "wikidata": "Q7989720",
+    "wikipedia": "en:Westside Theatre"
+  }
+},
+{
+  "type": "node",
+  "id": 3144067349,
+  "lat": 40.7772687,
+  "lon": -73.9422430,
+  "tags": {
+    "amenity": "ferry_terminal",
+    "cargo": "passengers;bicycle",
+    "ferry": "yes",
+    "name": "East 90th Street Ferry Terminal",
+    "network": "NYC Ferry",
+    "operator": "Hornblower",
+    "public_transport": "stop_position",
+    "website": "https://www.ferry.nyc/routes-and-schedules/landing/east-90th-street/"
+  }
+},
+{
+  "type": "node",
+  "id": 3351139473,
+  "lat": 40.6867676,
+  "lon": -74.0165035,
+  "tags": {
+    "amenity": "ferry_terminal",
+    "ferry": "yes",
+    "name": "Yankee Pier",
+    "public_transport": "station"
+  }
+},
+{
+  "type": "node",
+  "id": 3421054408,
+  "lat": 40.7293012,
+  "lon": -73.9921860,
+  "tags": {
+    "amenity": "theatre",
+    "name": "Astor Place Theatre",
+    "website": "https://www.blueman.com/new-york/about-show",
+    "wikidata": "Q4811073"
+  }
+},
+{
+  "type": "node",
+  "id": 3574706493,
+  "lat": 40.7286136,
+  "lon": -73.9847889,
+  "tags": {
+    "addr:housenumber": "155",
+    "addr:postcode": "10003",
+    "addr:street": "1st Avenue",
+    "amenity": "theatre",
+    "contact:email": "info@theaterforthenewcity.net",
+    "contact:facebook": "theaterforthenewcity",
+    "contact:fax": "+1 212-979-6570",
+    "contact:instagram": "theater_for_the_new_city",
+    "contact:phone": "+1 212-254-1109",
+    "contact:twitter": "tncinnyc",
+    "contact:website": "https://theaterforthenewcity.net",
+    "level": "0;1",
+    "name": "Theater for the New City",
+    "wikidata": "Q7777288",
+    "wikipedia": "en:Theater for the New City"
+  }
+},
+{
+  "type": "node",
+  "id": 4138783596,
+  "lat": 40.7637921,
+  "lon": -73.9828612,
+  "tags": {
+    "addr:housenumber": "1697",
+    "addr:street": "Broadway",
+    "amenity": "theatre",
+    "check_date": "2024-06-07",
+    "name": "Ed Sullivan Theater",
+    "website": "https://www.edsullivan.com/ed-sullivan-theater/",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4406663997,
+  "lat": 40.7651488,
+  "lon": -73.9797261,
+  "tags": {
+    "air_conditioning": "yes",
+    "amenity": "theatre",
+    "capacity": "2790",
+    "name": "Stern Auditorium",
+    "name:etymology": "Isaac Stern",
+    "name:etymology:wikidata": "Q311317",
+    "official_name": "Isaac Stern Auditorium",
+    "theatre": "concert_hall",
+    "website": "https://www.carnegiehall.org/About/Building-Overview/Stern-Auditorium-Perelman-Stage"
+  }
+},
+{
+  "type": "node",
+  "id": 4406663998,
+  "lat": 40.7652057,
+  "lon": -73.9798857,
+  "tags": {
+    "air_conditioning": "yes",
+    "amenity": "theatre",
+    "capacity": "268",
+    "name": "Weill Recital Hall",
+    "name:etymology": "The Weill Family Foundation",
+    "official_name": "Joan and Sanford I. Weill Recital Hall",
+    "theatre": "concert_hall",
+    "website": "https://www.carnegiehall.org/About/Building-Overview/Weill-Recital-Hall",
+    "wikidata": "Q52277228"
+  }
+},
+{
+  "type": "node",
+  "id": 4406663999,
+  "lat": 40.7649416,
+  "lon": -73.9801619,
+  "tags": {
+    "air_conditioning": "yes",
+    "amenity": "theatre",
+    "capacity": "599",
+    "name": "Zankel Hall",
+    "official_name": "Judy and Arthur Zankel Hall",
+    "start_date": "2003",
+    "theatre": "concert_hall",
+    "website": "https://www.carnegiehall.org/About/Building-Overview/Zankel-Hall",
+    "wikidata": "Q52291850"
+  }
+},
+{
+  "type": "node",
+  "id": 4420366891,
+  "lat": 40.7224743,
+  "lon": -73.9885122,
+  "tags": {
+    "addr:housenumber": "196",
+    "addr:postcode": "10002",
+    "addr:street": "Allen Street",
+    "amenity": "theatre",
+    "bar": "yes",
+    "email": "info@rockwoodmusichall.com",
+    "name": "Rockwood Music Hall",
+    "phone": "+1-212-477-4155",
+    "theatre:type": "music_venue",
+    "website": "https://rockwoodmusichall.com",
+    "wikidata": "Q18619471"
+  }
+},
+{
+  "type": "node",
+  "id": 4426900990,
+  "lat": 40.7214075,
+  "lon": -73.9886878,
+  "tags": {
+    "addr:city": "New York",
+    "addr:housenumber": "167",
+    "addr:postcode": "10002",
+    "addr:state": "NY",
+    "addr:street": "Stanton Street",
+    "amenity": "theatre",
+    "description": "Burlesque theater and lounge where patrons can watch variety shows from the main floor or mezzanine.",
+    "name": "The Slipper Room",
+    "operator": "The Slipper Room",
+    "phone": "(212) 253-7246",
+    "website": "https://slipperroom.com"
+  }
+},
+{
+  "type": "node",
+  "id": 4447010422,
+  "lat": 40.7506815,
+  "lon": -74.0038103,
+  "tags": {
+    "amenity": "theatre",
+    "name": "The McKittrick Hotel",
+    "website": "https://www.mckittrickhotel.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 4554035532,
+  "lat": 40.7610777,
+  "lon": -73.9840413,
+  "tags": {
+    "addr:city": "New York",
+    "addr:housenumber": "1626",
+    "addr:postcode": "10019",
+    "addr:state": "NY",
+    "addr:street": "Broadway",
+    "amenity": "theatre",
+    "cocktails": "yes",
+    "name": "Carolines on Broadway",
+    "phone": "+1 212-757-4100",
+    "theatre:genre": "stand_up_comedy",
+    "website": "https://www.carolines.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 4555789693,
+  "lat": 40.7265815,
+  "lon": -73.9937224,
+  "tags": {
+    "amenity": "theatre",
+    "name": "Gene Frankel Theatre",
+    "phone": "+1-212-777-1767"
+  }
+},
+{
+  "type": "node",
+  "id": 4607020321,
+  "lat": 40.7414435,
+  "lon": -74.0027591,
+  "tags": {
+    "addr:city": "New York",
+    "addr:housenumber": "330",
+    "addr:postcode": "10011",
+    "addr:state": "NY",
+    "addr:street": "West 16th Street",
+    "amenity": "theatre",
+    "name": "Atlantic Stage 2",
+    "operator": "Atlantic Theater Company",
+    "website": "https://atlantictheater.org/"
+  }
+},
+{
+  "type": "node",
+  "id": 4695187428,
+  "lat": 40.7605920,
+  "lon": -74.0039047,
+  "tags": {
+    "amenity": "ferry_terminal",
+    "check_date": "2024-06-08",
+    "ferry": "yes",
+    "internet_access": "wlan",
+    "name": "Midtown/West 39th Street",
+    "public_transport": "stop_position",
+    "toilets:wheelchair": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5028831921,
+  "lat": 40.7150625,
+  "lon": -73.9920393,
+  "tags": {
+    "amenity": "bus_station",
+    "bus": "yes",
+    "name": "Tiger Bus",
+    "public_transport": "station"
+  }
+},
+{
+  "type": "node",
+  "id": 5067030107,
+  "lat": 40.7567116,
+  "lon": -73.9525825,
+  "tags": {
+    "amenity": "ferry_terminal",
+    "ferry": "yes",
+    "name": "Roosevelt Island",
+    "public_transport": "station",
+    "wikidata": "Q118976612"
+  }
+},
+{
+  "type": "node",
+  "id": 5093187022,
+  "lat": 40.7040548,
+  "lon": -74.0144165,
+  "tags": {
+    "amenity": "bus_station",
+    "bus": "yes",
+    "public_transport": "station"
+  }
+},
+{
+  "type": "node",
+  "id": 5208082921,
+  "lat": 40.7281228,
+  "lon": -73.9843931,
+  "tags": {
+    "addr:housenumber": "150",
+    "addr:postcode": "10009",
+    "addr:street": "1st Avenue",
+    "amenity": "theatre",
+    "name": "Performance Space 122",
+    "website": "https://performancespacenewyork.org/",
+    "wikidata": "Q3375343",
+    "wikipedia": "en:Performance Space New York"
+  }
+},
+{
+  "type": "node",
+  "id": 5215246723,
+  "lat": 40.7312452,
+  "lon": -74.0052802,
+  "tags": {
+    "addr:city": "New York",
+    "addr:housenumber": "38",
+    "addr:postcode": "10014",
+    "addr:state": "NY",
+    "addr:street": "Commerce Street",
+    "amenity": "theatre",
+    "contact:email": "boxoffice@cherrylanetheatre.org",
+    "contact:phone": "+1-212-989-2020",
+    "contact:website": "https://www.cherrylanetheatre.org",
+    "name": "Cherry Lane Theatre",
+    "wikidata": "Q5092419"
+  }
+},
+{
+  "type": "node",
+  "id": 5220507721,
+  "lat": 40.7670277,
+  "lon": -73.9940376,
+  "tags": {
+    "amenity": "theatre",
+    "name": "The Daily Show with Trevor Noah"
+  }
+},
+{
+  "type": "node",
+  "id": 5235049512,
+  "lat": 40.7035134,
+  "lon": -74.0061435,
+  "tags": {
+    "amenity": "ferry_terminal",
+    "ferry": "yes",
+    "name": "IKEA Express Shuttle",
+    "public_transport": "station",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5319169560,
+  "lat": 40.7321597,
+  "lon": -74.0045267,
+  "tags": {
+    "amenity": "theatre",
+    "name": "Renee Weiler Concert Hall",
+    "theatre:genre": "chamber_music"
+  }
+},
+{
+  "type": "node",
+  "id": 5514171300,
+  "lat": 40.7298263,
+  "lon": -73.9977312,
+  "tags": {
+    "addr:housenumber": "566",
+    "addr:street": "LaGuardia Place",
+    "amenity": "theatre",
+    "capacity": "860",
+    "email": "skirball.center.info@nyu.edu",
+    "name": "Skirball Center for the Performing Arts",
+    "operator": "New York University",
+    "payment:cash": "yes",
+    "payment:credit_cards": "yes",
+    "phone": "+1-212-992-8484",
+    "toilets": "yes",
+    "toilets:wheelchair": "yes",
+    "website": "https://nyuskirball.org/",
+    "wheelchair": "yes",
+    "wikidata": "Q3486320"
+  }
+},
+{
+  "type": "node",
+  "id": 5794935823,
+  "lat": 40.7748581,
+  "lon": -73.9536956,
+  "tags": {
+    "addr:housenumber": "1568",
+    "addr:postcode": "10028",
+    "addr:street": "2nd Avenue",
+    "amenity": "theatre",
+    "check_date": "2024-08-05",
+    "cocktails": "yes",
+    "drink:beer": "yes",
+    "name": "Comic Strip Live",
+    "phone": "+1 212-861-9386",
+    "theatre:genre": "stand_up_comedy",
+    "website": "http://www.comicstriplive.com",
+    "wikidata": "Q5151775",
+    "wikipedia": "en:Comic Strip Live"
+  }
+},
+{
+  "type": "node",
+  "id": 5807550740,
+  "lat": 40.7206712,
+  "lon": -73.9843722,
+  "tags": {
+    "addr:city": "New York",
+    "addr:housenumber": "21",
+    "addr:postcode": "10002",
+    "addr:state": "NY",
+    "addr:street": "Clinton Street",
+    "addr:unit": "A",
+    "amenity": "theatre",
+    "check_date": "2025-04-04",
+    "description": "Speakeasy stage for playful, intelligent nightlife.",
+    "drink:beer": "yes",
+    "drink:wine": "yes",
+    "internet_access": "wlan",
+    "internet_access:fee": "no",
+    "level": "-1",
+    "min_age": "21",
+    "name": "Caveat",
+    "opening_hours": "Sa-Su 16:00-00:00; Mo-Fr 19:00-00:00",
+    "operator": "Caveat",
+    "payment:american_express": "yes",
+    "payment:mastercard": "yes",
+    "payment:visa": "yes",
+    "phone": "+1-212-228-2100",
+    "toilets": "yes",
+    "toilets:access": "permissive",
+    "toilets:unisex": "yes",
+    "toilets:wheelchair": "yes",
+    "website": "https://caveat.nyc/",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 5884955676,
+  "lat": 40.7595077,
+  "lon": -73.9841594,
+  "tags": {
+    "addr:housenumber": "711",
+    "addr:postcode": "10036",
+    "addr:street": "7th Avenue",
+    "amenity": "theatre",
+    "cocktails": "yes",
+    "email": "info@loltimessquare.com",
+    "name": "LOL Times Square Comedy Club",
+    "phone": "+1 212-643-6557",
+    "theatre:genre": "stand_up_comedy",
+    "website": "http://loltimessquare.com"
+  }
+},
+{
+  "type": "node",
+  "id": 6185166603,
+  "lat": 40.7536633,
+  "lon": -73.9932897,
+  "tags": {
+    "addr:housenumber": "312",
+    "addr:street": "West 36th Street",
+    "amenity": "theatre",
+    "check_date": "2024-06-09",
+    "email": "info@thetanknyc.org",
+    "name": "The Tank",
+    "phone": "(212) 563-6269",
+    "website": "https://www.thetanknyc.org"
+  }
+},
+{
+  "type": "node",
+  "id": 6211784452,
+  "lat": 40.8134547,
+  "lon": -73.9436358,
+  "tags": {
+    "addr:city": "New York",
+    "addr:housenumber": "148",
+    "addr:postcode": "10027",
+    "addr:state": "NY",
+    "addr:street": "West 132nd Street",
+    "amenity": "theatre",
+    "description": "Jazz legends play the small no-frills room. Patrons can bring their own alcohol. Reservations needed.",
+    "live_music": "yes",
+    "name": "Bill's Place",
+    "operator": "Bill's Place",
+    "reservation": "required"
+  }
+},
+{
+  "type": "node",
+  "id": 6219345013,
+  "lat": 40.7229520,
+  "lon": -73.9833576,
+  "tags": {
+    "addr:housenumber": "195",
+    "addr:street": "East 3rd Street",
+    "amenity": "theatre",
+    "name": "Wild Project",
+    "phone": "(212) 228-1195",
+    "website": "https://thewildproject.com"
+  }
+},
+{
+  "type": "node",
+  "id": 6222199105,
+  "lat": 40.7258874,
+  "lon": -73.9942403,
+  "tags": {
+    "addr:housenumber": "45",
+    "addr:street": "Bleecker Street",
+    "amenity": "theatre",
+    "name": "SubCulture",
+    "phone": "+1-212-533-5470",
+    "toilets": "yes",
+    "toilets:wheelchair": "yes",
+    "website": "https://subculturenewyork.com",
+    "wheelchair": "yes",
+    "wikidata": "Q22329586"
+  }
+},
+{
+  "type": "node",
+  "id": 6223203434,
+  "lat": 40.7205823,
+  "lon": -73.9927764,
+  "tags": {
+    "addr:housenumber": "161A",
+    "addr:postcode": "10002",
+    "addr:street": "Chrystie Street",
+    "amenity": "theatre",
+    "description": "Award winning non-profit theater for visual and performing arts.",
+    "name": "Dixon Place",
+    "phone": "212 219-0736",
+    "website": "https://dixonplace.org",
+    "wheelchair": "yes",
+    "wikidata": "Q5284964"
+  }
+},
+{
+  "type": "node",
+  "id": 6233982200,
+  "lat": 40.7585537,
+  "lon": -73.9933987,
+  "tags": {
+    "addr:housenumber": "410",
+    "addr:street": "West 42nd Street",
+    "amenity": "theatre",
+    "name": "Theatre Row",
+    "toilets:wheelchair": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q7777417"
+  }
+},
+{
+  "type": "node",
+  "id": 6233982618,
+  "lat": 40.7586397,
+  "lon": -73.9936128,
+  "tags": {
+    "addr:housenumber": "416",
+    "addr:postcode": "10036",
+    "addr:street": "West 42nd Street",
+    "amenity": "theatre",
+    "check_date": "2024-10-07",
+    "name": "Playwrights Horizons",
+    "phone": "+1-212-564-1235",
+    "website": "https://www.playwrightshorizons.org",
+    "wikidata": "Q164980"
+  }
+},
+{
+  "type": "node",
+  "id": 6234563392,
+  "lat": 40.7272575,
+  "lon": -73.9847924,
+  "tags": {
+    "addr:city": "New York",
+    "addr:housenumber": "94",
+    "addr:postcode": "10009",
+    "addr:state": "NY",
+    "addr:street": "Saint Mark's Place",
+    "amenity": "theatre",
+    "name": "Under St. Mark's Theater",
+    "operator": "Under St. Mark's Theater",
+    "phone": "(212) 777-6088",
+    "website": "https://www.horsetrade.info"
+  }
+},
+{
+  "type": "node",
+  "id": 6261908826,
+  "lat": 40.7254212,
+  "lon": -73.9932418,
+  "tags": {
+    "addr:housenumber": "18",
+    "addr:street": "Bleecker Street",
+    "amenity": "theatre",
+    "name": "Sheen Center"
+  }
+},
+{
+  "type": "node",
+  "id": 6288552808,
+  "lat": 40.7587201,
+  "lon": -73.9937452,
+  "tags": {
+    "addr:housenumber": "420",
+    "addr:street": "West 42nd Street",
+    "amenity": "theatre",
+    "name": "Fiddler on The Roof",
+    "website": "https://fiddlernyc.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 6458076485,
+  "lat": 40.7120859,
+  "lon": -74.0098739,
+  "tags": {
+    "amenity": "bus_station",
+    "bus": "yes",
+    "name": "The Oculus",
+    "public_transport": "station"
+  }
+},
+{
+  "type": "node",
+  "id": 6479458268,
+  "lat": 40.7459046,
+  "lon": -73.9828553,
+  "tags": {
+    "amenity": "theatre",
+    "bar": "yes",
+    "contact:phone": "+1 212 691 1900",
+    "contact:website": "http://thecuttingroomnyc.com",
+    "cuisine": "american",
+    "drink:beer": "draught",
+    "drink:liquor": "yes",
+    "drink:wine": "yes",
+    "name": "The Cutting Room",
+    "theatre:genre": "music"
+  }
+},
+{
+  "type": "node",
+  "id": 6549867415,
+  "lat": 40.7718357,
+  "lon": -73.9894755,
+  "tags": {
+    "addr:city": "New York",
+    "addr:housenumber": "248",
+    "addr:state": "NY",
+    "addr:street": "West 60th Street",
+    "amenity": "theatre",
+    "check_date": "2023-01-13",
+    "name": "Manhattan Movement & Arts Center",
+    "website": "https://www.manhattanmovement.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 6746682104,
+  "lat": 40.7319860,
+  "lon": -73.9728621,
+  "tags": {
+    "amenity": "ferry_terminal",
+    "ferry": "yes",
+    "name": "Stuyvesant Cove Ferry Station",
+    "public_transport": "station",
+    "source": "EsriWorldImagery"
+  }
+},
+{
+  "type": "node",
+  "id": 6746710797,
+  "lat": 40.7151578,
+  "lon": -74.0180720,
+  "tags": {
+    "alt_name": "Battery Park City / Vesey St.",
+    "amenity": "ferry_terminal",
+    "ferry": "yes",
+    "name": "Brookfield Place / Battery Park City",
+    "public_transport": "stop_position",
+    "wikidata": "Q4869871"
+  }
+},
+{
+  "type": "node",
+  "id": 6760369837,
+  "lat": 40.7486227,
+  "lon": -73.9841660,
+  "tags": {
+    "addr:city": "New York",
+    "addr:housenumber": "365",
+    "addr:postcode": "10016",
+    "addr:state": "NY",
+    "addr:street": "5th Avenue",
+    "amenity": "theatre",
+    "description": "70-seat stage for play readings, seminars, lectures and educational presentations.",
+    "name": "Martin E. Segal Theatre Center",
+    "operator": "CUNY Graduate School and University Center",
+    "phone": "(212) 817-1860",
+    "website": "https://thesegalcenter.org"
+  }
+},
+{
+  "type": "node",
+  "id": 6797561785,
+  "lat": 40.7625759,
+  "lon": -73.9856852,
+  "tags": {
+    "amenity": "theatre",
+    "name": "Winter Garden Theatre",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6867960885,
+  "lat": 40.7502930,
+  "lon": -73.9950868,
+  "tags": {
+    "amenity": "bus_station",
+    "bench": "no",
+    "bin": "yes",
+    "brand": "FlixBus",
+    "brand:wikidata": "Q15712258",
+    "bus": "yes",
+    "highway": "bus_stop",
+    "lit": "yes",
+    "name": "FlixBus NYC 300 W 31st St.",
+    "public_transport": "platform",
+    "shelter": "no",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6910663883,
+  "lat": 40.7163497,
+  "lon": -73.9954844,
+  "tags": {
+    "addr:housenumber": "145",
+    "addr:street": "Canal Street",
+    "amenity": "bus_station",
+    "bus": "yes",
+    "name": "Lucky Star",
+    "phone": "+1-617-269-5468",
+    "public_transport": "station",
+    "shop": "ticket",
+    "tickets:public_transport": "yes",
+    "website": "https://www.luckystarbus.com"
+  }
+},
+{
+  "type": "node",
+  "id": 6966903881,
+  "lat": 40.7354298,
+  "lon": -73.9884636,
+  "tags": {
+    "addr:housenumber": "116",
+    "addr:street": "East 16th Street",
+    "amenity": "theatre",
+    "cocktails": "yes",
+    "contact:facebook": "https://www.facebook.com/thestandnyc",
+    "contact:instagram": "https://www.instagram.com/thestandnyc/",
+    "contact:twitter": "https://twitter.com/thestandnyc",
+    "cuisine": "american",
+    "name": "The Stand",
+    "opening_hours": "Mo-Th 17:00-02:00; Fr 17:00-02:30; Sa 11:00-02:00; Su 11:00-24:00",
+    "phone": "+1 212-677-2600",
+    "reservation": "yes",
+    "theatre:genre": "stand_up_comedy",
+    "website": "https://thestandnyc.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 7124962483,
+  "lat": 40.7256117,
+  "lon": -73.9779248,
+  "tags": {
+    "addr:housenumber": "151",
+    "addr:postcode": "10009",
+    "addr:street": "Avenue C",
+    "alt_name": "Nublu 151",
+    "amenity": "theatre",
+    "cocktails": "yes",
+    "contact:facebook": "https://www.facebook.com/nublu",
+    "contact:instagram": "https://www.instagram.com/nublunyc/",
+    "description": "Small club focusing on jazz, blues, and contemporary music.",
+    "email": "nublu@nublu.net",
+    "level": "0",
+    "name": "Studio 151",
+    "opening_hours": "19:00-04:00",
+    "operator": "Ilhan Ersahin",
+    "website": "http://www.nublu.net"
+  }
+},
+{
+  "type": "node",
+  "id": 7235100085,
+  "lat": 40.7622484,
+  "lon": -73.9853553,
+  "tags": {
+    "amenity": "theatre",
+    "check_date": "2024-03-07",
+    "level": "-1",
+    "name": "Circle in the Square Theatre",
+    "wheelchair": "no",
+    "wikidata": "Q2973328",
+    "wikipedia": "en:Circle in the Square Theatre"
+  }
+},
+{
+  "type": "node",
+  "id": 7362789412,
+  "lat": 40.7388641,
+  "lon": -73.9808406,
+  "tags": {
+    "addr:housenumber": "241",
+    "addr:postcode": "10010",
+    "addr:street": "East 24th Street",
+    "amenity": "theatre",
+    "name": "New York Comedy Club",
+    "phone": "+1-212-696-5233",
+    "theatre:genre": "comedy",
+    "website": "https://newyorkcomedyclub.com"
+  }
+},
+{
+  "type": "node",
+  "id": 7653858222,
+  "lat": 40.7567679,
+  "lon": -73.9882358,
+  "tags": {
+    "addr:housenumber": "229",
+    "addr:street": "West 42nd Street",
+    "amenity": "theatre",
+    "check_date": "2024-04-09",
+    "email": "dukeinfo@new42.org",
+    "name": "The Duke on 42nd Street",
+    "opening_hours": "Mo-Fr 09:30-18:00",
+    "operator": "The New 42nd Street",
+    "phone": "+1 646-223-3010",
+    "website": "https://dukeon42.org/"
+  }
+},
+{
+  "type": "node",
+  "id": 8276469129,
+  "lat": 40.7040837,
+  "lon": -74.0057599,
+  "tags": {
+    "amenity": "theatre",
+    "theatre:type": "amphi"
+  }
+},
+{
+  "type": "node",
+  "id": 8313261673,
+  "lat": 40.7101297,
+  "lon": -73.9792319,
+  "tags": {
+    "amenity": "ferry_terminal",
+    "ferry": "yes",
+    "name": "Corlears Hook",
+    "network": "Lower East Side",
+    "operator": "NYC Ferry, Hornblower",
+    "public_transport": "stop_position",
+    "website": "https://www.ferry.nyc/routes-and-schedules/route/lower-east-side/"
+  }
+},
+{
+  "type": "node",
+  "id": 8402020621,
+  "lat": 40.7669219,
+  "lon": -73.9869645,
+  "tags": {
+    "addr:city": "New York",
+    "addr:housenumber": "405",
+    "addr:postcode": "10019",
+    "addr:street": "West 55th Street",
+    "amenity": "theatre",
+    "name": "Alvin Ailey American Dance Theater",
+    "phone": "+1 212 405 9000",
+    "website": "https://www.alvinailey.org/",
+    "wikidata": "Q449026",
+    "wikipedia": "en:Alvin Ailey American Dance Theater"
+  }
+},
+{
+  "type": "node",
+  "id": 8792950865,
+  "lat": 40.7417135,
+  "lon": -73.9825386,
+  "tags": {
+    "amenity": "theatre",
+    "name": "Repertorio Español",
+    "phone": "+1-212-225-9999",
+    "website": "https://repertorio.nyc",
+    "wikidata": "Q7313980"
+  }
+},
+{
+  "type": "node",
+  "id": 9026893489,
+  "lat": 40.7415948,
+  "lon": -74.0107005,
+  "tags": {
+    "amenity": "theatre",
+    "layer": "1",
+    "name": "The Glade",
+    "theatre:type": "amphi",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 9119778983,
+  "lat": 40.7589046,
+  "lon": -73.9947045,
+  "tags": {
+    "addr:city": "New York",
+    "addr:housenumber": "570",
+    "addr:postcode": "10036",
+    "addr:state": "NY",
+    "addr:street": "10th Avenue",
+    "amenity": "theatre",
+    "name": "The Green Room 42",
+    "website": "https://thegreenroom42.venuetix.com"
+  }
+},
+{
+  "type": "node",
+  "id": 9251775550,
+  "lat": 40.7736785,
+  "lon": -73.9832583,
+  "tags": {
+    "air_conditioning": "yes",
+    "alt_name": "Paul Hall",
+    "amenity": "theatre",
+    "level": "1",
+    "name": "Paul Recital Hall",
+    "operator": "The Juilliard School",
+    "operator:type": "ngo",
+    "operator:wikidata": "Q503246",
+    "smoking": "no",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9287986219,
+  "lat": 40.6932017,
+  "lon": -74.0150361,
+  "tags": {
+    "amenity": "ferry_terminal",
+    "ferry": "yes",
+    "name:de": "Gouverneursinsel",
+    "name:es": "Isla de los gobernadores",
+    "name:fr": "Île des gouverneurs",
+    "name:pt": "Ilha dos governadores",
+    "public_transport": "station",
+    "website": "https://govisland.com/info/ferry"
+  }
+},
+{
+  "type": "node",
+  "id": 9287986227,
+  "lat": 40.6930135,
+  "lon": -74.0153060,
+  "tags": {
+    "amenity": "ferry_terminal",
+    "ferry": "yes",
+    "name": "Soissons Landing",
+    "public_transport": "station",
+    "source_ref": "https://www.govisland.com/map",
+    "website": "https://www.govisland.com/plan-your-visit/ferry",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9327765068,
+  "lat": 40.7739607,
+  "lon": -73.9837063,
+  "tags": {
+    "addr:city": "New York",
+    "addr:housenumber": "155",
+    "addr:postcode": "10023",
+    "addr:state": "NY",
+    "addr:street": "West 65th Street",
+    "air_conditioning": "yes",
+    "amenity": "theatre",
+    "level": "-1,0",
+    "name": "Peter Jay Sharp Theater",
+    "operator": "The Juilliard School",
+    "operator:type": "ngo",
+    "operator:wikidata": "Q503246",
+    "smoking": "no",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9630409563,
+  "lat": 40.7265382,
+  "lon": -73.9898394,
+  "tags": {
+    "addr:city": "New York",
+    "addr:housenumber": "85",
+    "addr:postcode": "10003",
+    "addr:state": "NY",
+    "addr:street": "East 4th Street",
+    "addr:unit": "102",
+    "alt_name": "FRIGID New York",
+    "amenity": "theatre",
+    "name": "Kraine Theater",
+    "operator": "Erez Ziv",
+    "phone": "+1-212-777-6088",
+    "website": "https://www.frigid.nyc/"
+  }
+},
+{
+  "type": "node",
+  "id": 9630409565,
+  "lat": 40.7264872,
+  "lon": -73.9898762,
+  "tags": {
+    "addr:city": "New York",
+    "addr:housenumber": "85",
+    "addr:postcode": "10003",
+    "addr:state": "NY",
+    "addr:street": "East 4th Street",
+    "addr:unit": "101",
+    "amenity": "theatre",
+    "bar": "yes",
+    "min_age": "21",
+    "name": "New York Comedy Club",
+    "phone": "+1-212-994-9828",
+    "theatre:genre": "standup_comedy",
+    "website": "https://newyorkcomedyclub.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 9649588082,
+  "lat": 40.7549701,
+  "lon": -73.9917432,
+  "tags": {
+    "addr:housenumber": "305",
+    "addr:postcode": "10018",
+    "addr:street": "West 38th Street",
+    "amenity": "theatre",
+    "branch": "305 W 38th St",
+    "level": "1; 2",
+    "name": "Ripley-Grier Flexible Spaces",
+    "opening_hours": "Mo-Fr 09:00-22:00; Sa, Su 09:00-19:00",
+    "phone": "+1 212-799-5433",
+    "website": "https://ripleygrier.com/ripley-grier-studios-38th-street-for-rent.html"
+  }
+},
+{
+  "type": "node",
+  "id": 9661358848,
+  "lat": 40.7249142,
+  "lon": -73.9926017,
+  "tags": {
+    "addr:housenumber": "308",
+    "addr:postcode": "10012",
+    "addr:street": "Bowery",
+    "amenity": "theatre",
+    "name": "Bowery Poetry",
+    "old_name": "Bowery Poetry Club",
+    "phone": "+1-212-614-0505",
+    "theatre:genre": "poetry",
+    "website": "https://www.bowerypoetry.com"
+  }
+},
+{
+  "type": "node",
+  "id": 9863904626,
+  "lat": 40.7733628,
+  "lon": -73.9850233,
+  "tags": {
+    "air_conditioning": "yes",
+    "amenity": "theatre",
+    "name": "Bruno Walter Auditorium",
+    "name:etymology": "Bruno Walter",
+    "name:etymology:wikidata": "Q156910",
+    "website": "https://www.nypl.org/about/locations/lpa/events",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10223896090,
+  "lat": 40.7780433,
+  "lon": -73.9809738,
+  "tags": {
+    "addr:city": "New York",
+    "addr:country": "US",
+    "addr:housenumber": "158",
+    "addr:postcode": "10023",
+    "addr:state": "NY",
+    "addr:street": "West 72nd Street",
+    "amenity": "theatre",
+    "level": "1",
+    "name": "Triad Theater",
+    "phone": "+1 212-362-2590",
+    "website": "http://www.triadnyc.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 10683893736,
+  "lat": 40.7155730,
+  "lon": -73.9937051,
+  "tags": {
+    "addr:housenumber": "95",
+    "addr:street": "Canal Street",
+    "amenity": "bus_station",
+    "bus": "yes",
+    "name": "95 Bus Stop",
+    "phone": "+1 212-965-8880",
+    "public_transport": "station",
+    "website": "https://www.wandacoach.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 11314008718,
+  "lat": 40.7534461,
+  "lon": -74.0027363,
+  "tags": {
+    "air_conditioning": "yes",
+    "amenity": "theatre",
+    "capacity": "500",
+    "indoor": "room",
+    "level": "6",
+    "level:ref": "6",
+    "name": "Kenneth C. Griffen Theater",
+    "operator": "The Shed",
+    "room": "auditorium",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11314008721,
+  "lat": 40.7534011,
+  "lon": -74.0026357,
+  "tags": {
+    "air_conditioning": "yes",
+    "amenity": "theatre",
+    "capacity": "2220",
+    "indoor": "room",
+    "level": "2",
+    "level:ref": "2",
+    "name": "The McCourt",
+    "operator": "The Shed",
+    "room": "auditorium",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11502442178,
+  "lat": 40.7664555,
+  "lon": -73.9917224,
+  "tags": {
+    "addr:city": "New York",
+    "addr:housenumber": "511",
+    "addr:postcode": "10019",
+    "addr:state": "NY",
+    "addr:street": "West 52nd Street",
+    "amenity": "theatre",
+    "building": "yes",
+    "contact:facebook": "https://www.facebook.com/mccnyc",
+    "name": "The Robert W. Wilson MCC Theater Space",
+    "phone": "+1-646-506-9393",
+    "website": "https://mcctheater.org"
+  }
+},
+{
+  "type": "node",
+  "id": 11789217686,
+  "lat": 40.7258282,
+  "lon": -73.9839841,
+  "tags": {
+    "amenity": "theatre",
+    "name": "Knitting Factory",
+    "website": "https://ny.knittingfactory.com"
+  }
+},
+{
+  "type": "node",
+  "id": 11817061866,
+  "lat": 40.7592846,
+  "lon": -73.9951283,
+  "tags": {
+    "addr:housenumber": "480",
+    "addr:postcode": "10036",
+    "addr:street": "West 42nd Street",
+    "alt_name": "The Pershing Square Signature Center",
+    "amenity": "theatre",
+    "check_date": "2024-10-07",
+    "name": "Signature Theatre",
+    "phone": "+1-212-967-1913",
+    "website": "https://signaturetheatre.org",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11980017801,
+  "lat": 40.8102327,
+  "lon": -73.9537680,
+  "tags": {
+    "addr:city": "New York",
+    "addr:housenumber": "6",
+    "addr:postcode": "10027",
+    "addr:state": "NY",
+    "addr:street": "Hancock Place",
+    "amenity": "theatre",
+    "name": "Faison Firehouse Theater"
+  }
+},
+{
+  "type": "node",
+  "id": 12126165483,
+  "lat": 40.7941015,
+  "lon": -73.9728744,
+  "tags": {
+    "addr:city": "New York",
+    "addr:housenumber": "2537",
+    "addr:postcode": "10025",
+    "addr:state": "NY",
+    "addr:street": "Broadway",
+    "amenity": "theatre",
+    "name": "Leonard Nimoy Thalia"
+  }
+},
+{
+  "type": "node",
+  "id": 12138358700,
+  "lat": 40.7264507,
+  "lon": -74.0043756,
+  "tags": {
+    "amenity": "theatre",
+    "contact:facebook": "https://www.facebook.com/sohoplayhouseinc",
+    "email": "Boxoffice@sohoplayhouse.com",
+    "name": "SoHo Playhouse",
+    "phone": "+1-212-691-1555",
+    "website": "https://www.sohoplayhouse.com/",
+    "wikidata": "Q15032335"
+  }
+},
+{
+  "type": "node",
+  "id": 12175585351,
+  "lat": 40.7589043,
+  "lon": -73.9861848,
+  "tags": {
+    "addr:city": "New York",
+    "addr:housenumber": "210",
+    "addr:postcode": "10036",
+    "addr:state": "NY",
+    "addr:street": "West 46th Street",
+    "air_conditioning": "yes",
+    "amenity": "theatre",
+    "capacity": "1611",
+    "name": "Marquis Theatre",
+    "operator": "Nederlander Organization",
+    "operator:type": "private",
+    "operator:wikidata": "Q12063654",
+    "start_date": "1986",
+    "website": "https://broadwaydirect.com/theatre/marquis-theatre/",
+    "wheelchair": "yes",
+    "wikidata": "Q6772686"
+  }
+},
+{
+  "type": "node",
+  "id": 12235107076,
+  "lat": 40.7473981,
+  "lon": -73.9922667,
+  "tags": {
+    "alt_name": "The Peoples Improv Theater",
+    "amenity": "theatre",
+    "level": "1",
+    "name": "The PIT",
+    "phone": "+1-212-244-1722",
+    "theatre:genre": "stand_up_comedy",
+    "website": "https://thepit-nyc.com"
+  }
+},
+{
+  "type": "node",
+  "id": 12517076897,
+  "lat": 40.7348029,
+  "lon": -73.9889177,
+  "tags": {
+    "addr:city": "New York",
+    "addr:housenumber": "108",
+    "addr:postcode": "10003",
+    "addr:state": "NY",
+    "addr:street": "East 15th Street",
+    "amenity": "theatre",
+    "name": "Vineyard Theatre",
+    "website": "https://vineyardtheatre.org/"
+  }
+},
+{
+  "type": "node",
+  "id": 12517076898,
+  "lat": 40.7633055,
+  "lon": -73.9704554,
+  "tags": {
+    "addr:city": "New York",
+    "addr:housenumber": "59",
+    "addr:postcode": "10022",
+    "addr:state": "NY",
+    "addr:street": "East 59th Street",
+    "amenity": "theatre",
+    "name": "59E59 Theaters",
+    "operator": "59E59 Theaters",
+    "website": "https://www.59e59.org"
+  }
+},
+{
+  "type": "node",
+  "id": 12517076899,
+  "lat": 40.7250601,
+  "lon": -74.0050764,
+  "tags": {
+    "addr:city": "New York",
+    "addr:housenumber": "145",
+    "addr:postcode": "10013",
+    "addr:state": "NY",
+    "addr:street": "6th Avenue",
+    "amenity": "theatre",
+    "name": "HERE Arts Center",
+    "operator": "HERE Arts Center",
+    "website": "https://here.org"
+  }
+},
+{
+  "type": "node",
+  "id": 12517076900,
+  "lat": 40.7405316,
+  "lon": -73.9847625,
+  "tags": {
+    "addr:city": "New York",
+    "addr:housenumber": "123",
+    "addr:postcode": "10010",
+    "addr:state": "NY",
+    "addr:street": "East 24th Street",
+    "amenity": "theatre",
+    "name": "Asylum NYC",
+    "operator": "Asylum NYC",
+    "website": "https://asylumnyc.com"
+  }
+},
+{
+  "type": "node",
+  "id": 12517105501,
+  "lat": 40.7160935,
+  "lon": -74.0058928,
+  "tags": {
+    "addr:city": "New York",
+    "addr:housenumber": "20",
+    "addr:postcode": "10007",
+    "addr:state": "NY",
+    "addr:street": "Thomas Street",
+    "amenity": "theatre",
+    "name": "The Flea",
+    "operator": "The Flea",
+    "phone": "+1 212 226 0051",
+    "website": "https://thenewflea.org"
+  }
+},
+{
+  "type": "node",
+  "id": 12517105502,
+  "lat": 40.7421473,
+  "lon": -73.9983160,
+  "tags": {
+    "addr:city": "New York",
+    "addr:housenumber": "219",
+    "addr:postcode": "10011",
+    "addr:state": "NY",
+    "addr:street": "West 19th Street",
+    "amenity": "theatre",
+    "name": "New York Live Arts",
+    "operator": "New York Live Arts",
+    "phone": "+1 212 691 6500",
+    "website": "https://newyorklivearts.org"
+  }
+},
+{
+  "type": "node",
+  "id": 12517105503,
+  "lat": 40.7557546,
+  "lon": -73.9845842,
+  "tags": {
+    "addr:city": "New York",
+    "addr:housenumber": "124",
+    "addr:postcode": "10036",
+    "addr:state": "NY",
+    "addr:street": "West 43rd Street",
+    "amenity": "theatre",
+    "name": "Stephen Sondheim Theatre",
+    "operator": "Roundabout Theatre Company",
+    "website": "https://www.roundabouttheatre.org/"
+  }
+},
+{
+  "type": "node",
+  "id": 12517302924,
+  "lat": 40.7404244,
+  "lon": -73.9833045,
+  "tags": {
+    "addr:city": "New York",
+    "addr:housenumber": "55",
+    "addr:postcode": "10010",
+    "addr:state": "NY",
+    "addr:street": "Lexington Avenue",
+    "amenity": "theatre",
+    "name": "Baruch Performing Arts Center",
+    "operator": "Baruch College",
+    "website": "https://bpac.baruch.cuny.edu"
+  }
+},
+{
+  "type": "node",
+  "id": 12517302925,
+  "lat": 40.7427147,
+  "lon": -73.9946985,
+  "tags": {
+    "addr:city": "New York",
+    "addr:housenumber": "132",
+    "addr:postcode": "10011",
+    "addr:state": "NY",
+    "addr:street": "West 22nd Street",
+    "amenity": "theatre",
+    "name": "Irish Repertory Theatre",
+    "operator": "Irish Repertory Theatre",
+    "website": "https://irishrep.org"
+  }
+},
+{
+  "type": "node",
+  "id": 12517302927,
+  "lat": 40.7263232,
+  "lon": -73.9980432,
+  "tags": {
+    "addr:city": "New York",
+    "addr:housenumber": "38",
+    "addr:postcode": "10012",
+    "addr:state": "NY",
+    "addr:street": "West Houston Street",
+    "amenity": "theatre",
+    "name": "Iris Cantor Theatre",
+    "operator": "New York University",
+    "website": "https://tisch.nyu.edu/drama/production-resources/production-theatres/iris-cantor-theatre"
+  }
+},
+{
+  "type": "node",
+  "id": 12832820860,
+  "lat": 40.7741184,
+  "lon": -73.9835924,
+  "tags": {
+    "air_conditioning": "yes",
+    "amenity": "theatre",
+    "capacity": "188",
+    "level:ref": "4",
+    "name": "Stephanie P. McClelland Drama Theater",
+    "operator": "The Juilliard School",
+    "operator:type": "ngo",
+    "operator:wikidata": "Q503246",
+    "smoking": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 12861369759,
+  "lat": 40.7736770,
+  "lon": -73.9848015,
+  "tags": {
+    "addr:city": "New York",
+    "addr:housenumber": "150",
+    "addr:postcode": "10023",
+    "addr:state": "NY",
+    "addr:street": "West 65th Street",
+    "air_conditioning": "yes",
+    "amenity": "theatre",
+    "level": "1",
+    "name": "Vivian Beaumont Theater",
+    "name:etymology": "Vivian Beaumont Allen",
+    "name:etymology:wikidata": "Q7937674",
+    "start_date": "1965-10-21",
+    "website": "https://www.lct.org/about/beaumont-theater/",
+    "wikidata": "Q176205",
+    "wikipedia": "en:Vivian Beaumont Theater"
+  }
+},
+{
+  "type": "node",
+  "id": 12861369760,
+  "lat": 40.7736569,
+  "lon": -73.9842806,
+  "tags": {
+    "addr:city": "New York",
+    "addr:housenumber": "150",
+    "addr:postcode": "10023",
+    "addr:state": "NY",
+    "addr:street": "West 65th Street",
+    "air_conditioning": "yes",
+    "amenity": "theatre",
+    "name": "Mitzi E. Newhouse Theater",
+    "name:etymology": "Mitzi E. Newhouse",
+    "name:etymology:wikidata": "Q56668895",
+    "website": "https://www.lct.org/about/newhouse-theater/",
+    "wikidata": "Q56668879"
+  }
+},
+{
+  "type": "node",
+  "id": 12861369761,
+  "lat": 40.7733541,
+  "lon": -73.9843284,
+  "tags": {
+    "addr:city": "New York",
+    "addr:housenumber": "150",
+    "addr:postcode": "10023",
+    "addr:state": "NY",
+    "addr:street": "West 65th Street",
+    "amenity": "theatre",
+    "name": "Claire Tow Theater"
+  }
+}
+
+  ]
+}
