@@ -1,0 +1,9 @@
+project_id  = "nyc-analytics-dev"
+region      = "us-central1"
+bq_location = "US"
+name_prefix = "nyc"
+env         = "dev"
+
+# Optional overrides
+# sa_airflow_id  = "airflow-orchestrator"
+# sa_dataproc_id = "dataproc-runtime"
