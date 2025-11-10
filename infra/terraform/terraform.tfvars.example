@@ -3,6 +3,7 @@ region      = "us-central1"
 bq_location = "US"
 name_prefix = "nyc"
 env         = "dev"
+bucket_name = "nyc-analytics-dev-data"
 
 # Optional overrides
 # sa_airflow_id  = "airflow-orchestrator"
