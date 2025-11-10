@@ -1,0 +1,32 @@
+# Byte-compiled / cached files
+__pycache__/
+*.py[cod]
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Local virtualenv and pipenv
+/.venv/
+Pipfile.lock
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+terraform.tfvars
+terraform.tfvars.json
+override.tf
+override.tf.json
+*.tfvars
+.terraform.lock.hcl
+
+# Crash log
+crash.log
+
+# macOS
+.DS_Store
+
+# Editor directories and files
+.vscode/
+*.swp
+*~

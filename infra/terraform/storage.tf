@@ -1,7 +1,3 @@
-variable "project_id"  
-variable "region"      
-variable "bucket_name" 
-
 resource "google_storage_bucket" "data" {
   name                        = var.bucket_name
   location                    = var.region
@@ -10,7 +6,10 @@ resource "google_storage_bucket" "data" {
 
  
   lifecycle_rule {
-    action { type = "SetStorageClass", storage_class = "NEARLINE" }
+    action {
+      type          = "SetStorageClass"
+      storage_class = "NEARLINE"
+    }
     condition {
       age            = 30
       matches_prefix = ["raw/"]        # raw -> NEARLINE after 30 days
@@ -35,10 +34,9 @@ resource "google_storage_bucket" "data" {
 
   
 }
-
 resource "google_storage_bucket_object" "folders" {
   for_each = toset(["raw/", "stg/", "curated/", "gold/", "code/"])
-  name     = each.value + "_README.txt"
+  name     = "${each.value}_README.txt"
   content  = "Prefix ${each.value} for NYC pipeline."
   bucket   = google_storage_bucket.data.name
 }
