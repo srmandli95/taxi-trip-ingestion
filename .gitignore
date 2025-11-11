@@ -30,3 +30,10 @@ crash.log
 .vscode/
 *.swp
 *~
+
+
+# Airflow local/runtime files
+/airflow/.env                 # local env with secrets
+/airflow/airflow.db           # sqlite DB (local only)
+/airflow/logs/                # runtime logs
+/airflow/.airflowignore       # optional: ignore rules file (if you create it locally)
