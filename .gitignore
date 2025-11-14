@@ -37,3 +37,6 @@ crash.log
 /airflow/airflow.db           # sqlite DB (local only)
 /airflow/logs/                # runtime logs
 /airflow/.airflowignore       # optional: ignore rules file (if you create it locally)
+
+# GCP Service Account Keys
+/airflow/include/keys/*.json
