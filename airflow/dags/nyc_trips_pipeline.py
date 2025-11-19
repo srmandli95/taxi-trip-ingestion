@@ -137,28 +137,6 @@ def ingest_events(ds: str, **kwargs):
     print(f"[events] Uploaded to {gcs_path}")
 
 
-# ---------------- POIs Ingest ----------------
-def ingest_pois(ds: str, **kwargs):
-    date_obj = datetime.strptime(ds, "%Y-%m-%d")
-    ds_final = date_obj.strftime("%Y-%m-%d")
-
-    project, bucket = _get_project_bucket()
-
-    url = "https://data.cityofnewyork.us/resource/rxuy-2muj.json"
-    params = {"$limit": 5000}
-
-    resp = requests.get(url, params=params)
-    resp.raise_for_status()
-    pois = resp.json()
-
-    df = pd.json_normalize(pois)
-    print(f"[pois] Fetched {len(df)} POI rows")
-
-    gcs_path = f"raw/pois/{ds_final}/pois.parquet"
-    upload_parquet_to_gcs(project, bucket, df, gcs_path)
-    print(f"[pois] Uploaded to {gcs_path}")
-
-
 # ---------------- DAG ----------------
 dag = DAG(
     dag_id="nyc_trips_pipeline",
@@ -201,12 +179,6 @@ with dag:
         ingest_events_day = PythonOperator(
             task_id="ingest_events_day",
             python_callable=ingest_events,
-            op_kwargs={"ds": "{{ params.date or ds }}"},
-        )
-
-        ingest_pois_day = PythonOperator(
-            task_id="ingest_pois_day",
-            python_callable=ingest_pois,
             op_kwargs={"ds": "{{ params.date or ds }}"},
         )
 
