@@ -2,7 +2,7 @@ import logging
 import inspect
 
 def get_logger() -> logging.Logger:
-    """ Retunrns a module-level logger with the specified logging level. """
+    """ Returns a module-level logger with the specified logging level. """
 
     caller_frame = inspect.stack()[1]
     module = inspect.getmodule(caller_frame[0])
@@ -12,6 +12,8 @@ def get_logger() -> logging.Logger:
 
 
 def log(msg: str, level: str = "INFO", **kwargs):
+    """Log a message with the specified level and additional context. """
+    
     logger = get_logger()
 
     if kwargs:
