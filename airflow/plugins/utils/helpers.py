@@ -9,6 +9,7 @@ import logging
 from airflow.models import Variable
 from airflow.providers.google.cloud.hooks.gcs import GCSHook
  
+# Helper functions for Airflow tasks
 
 def get_airflow_var(key: str, default:str | None = None) -> str | None:
     """Prefer Airflow Variable. If not found, fall back to environment variable.
@@ -81,6 +82,26 @@ def upload_parquet_to_gcs(project: str, bucket: str, df, path: str, gcp_conn_id:
         object_name=path,
         data=buf.getvalue(),
         mime_type="application/octet-stream",
+    )
+
+def upload_string_to_gcs(project: str, bucket: str, content: str, path: str, mime_type: str = "text/plain", gcp_conn_id: str = "google_cloud_default") -> None:
+    """
+    Upload a string (JSON, CSV, etc.) to GCS using Airflow's GCSHook.
+    
+    Args:
+        project (str): GCP project ID.
+        bucket (str): GCS bucket name.
+        content (str): String content to upload.
+        path (str): GCS object path.
+        mime_type (str): MIME type of the content.
+        gcp_conn_id (str): Airflow GCP connection ID.
+    """
+    hook = GCSHook(gcp_conn_id=gcp_conn_id)
+    hook.upload(
+        bucket_name=bucket,
+        object_name=path,
+        data=content,
+        mime_type=mime_type,
     )
 
 
