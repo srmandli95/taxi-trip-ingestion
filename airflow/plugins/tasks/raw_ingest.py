@@ -3,11 +3,12 @@ import requests
 import json
 import os
 from datetime import datetime
+from google.oauth2 import service_account
+from google.cloud import bigquery
 
-from utils.helpers import get_project_bucket, upload_parquet_to_gcs, upload_string_to_gcs, normalize_date, get_airflow_var
+from utils.helpers import get_project_bucket, get_airflow_var, get_credentials, get_execution_date
 from utils.logger import log
-
-
+from pandas_gbq import to_gbq
 
 def ingest_trips(ds: str, **kwargs):
 
@@ -16,19 +17,14 @@ def ingest_trips(ds: str, **kwargs):
         ds (str): Date string in YYYY-MM-DD format.
     """
     
-    project, bucket = get_project_bucket()
+    project, _ = get_project_bucket()
     base_url = get_airflow_var("AIRFLOW_VAR_TRIPS_BASE_URL", "https://d37ci6vzurychx.cloudfront.net/trip-data")
     
     # Check for override date in dag_run.conf
-    dag_run = kwargs.get('dag_run')
-    if dag_run and dag_run.conf and 'date' in dag_run.conf:
-        ds = dag_run.conf['date']
-        log(f"Using overridden date from UI: {ds}")
+    ds = get_execution_date(ds, kwargs)
 
     # Parse date from ds
     date_obj = datetime.strptime(ds, "%Y-%m-%d")
-    year = date_obj.year
-    month = date_obj.month
     ym_label = date_obj.strftime("%Y-%m")
     
     url = f"{base_url}/yellow_tripdata_{ym_label}.parquet"
@@ -40,35 +36,27 @@ def ingest_trips(ds: str, **kwargs):
     df = df[df['tpep_pickup_datetime'].dt.date == date_obj.date()]
     log(f"Rows for {ds}: {len(df)}")
 
-    day = date_obj.day
-    gcs_path = (
-        f"raw/trips/year={year}/"
-        f"month={month:02d}/"
-        f"day={day:02d}/"
-        f"yellow_tripdata_{ds}.parquet"
-    )
+    # Add partition_date column
+    df['partition_date'] = date_obj.date()
 
-    upload_parquet_to_gcs(project, bucket, df, gcs_path)
+    # Load to BigQuery
+    table_id = f"{project}.raw.yellow_trips"
+    log(f"Loading {len(df)} rows to {table_id}")
+    to_gbq(df, table_id, project_id=project, if_exists='append', credentials=get_credentials())
 
 def ingest_weather(ds: str, **kwargs):
     """Ingest weather data for the given date."""
-    project, bucket = get_project_bucket()
+    project, _ = get_project_bucket()
     
-    # Check for override date in dag_run.conf
-    dag_run = kwargs.get('dag_run')
-    if dag_run and dag_run.conf and 'date' in dag_run.conf:
-        ds = dag_run.conf['date']
-        log(f"Using overridden date from UI: {ds}")
+
+    ds = get_execution_date(ds, kwargs)
     
-    # Parse date
+   
     date_obj = datetime.strptime(ds, "%Y-%m-%d")
-    year = date_obj.year
-    month = date_obj.month
-    day = date_obj.day
     
-    # Open-Meteo API
-    lat = 40.71
-    lon = -74.01
+    
+    lat = float(get_airflow_var("AIRFLOW_VAR_NYC_LAT", "40.71"))
+    lon = float(get_airflow_var("AIRFLOW_VAR_NYC_LON", "-74.01"))
     url = "https://archive-api.open-meteo.com/v1/archive"
     params = {
         "latitude": lat,
@@ -84,56 +72,41 @@ def ingest_weather(ds: str, **kwargs):
     response.raise_for_status()
     data = response.json()
     
-    # Upload to GCS
-    gcs_path = f"raw/weather/year={year}/month={month:02d}/day={day:02d}/weather_{ds}.json"
-    upload_string_to_gcs(project, bucket, json.dumps(data), gcs_path, mime_type="application/json")
-
-def ingest_events(ds: str, **kwargs):
-    """Ingest NYC permitted events for the given date."""
-    project, bucket = get_project_bucket()
     
-    # Check for override date in dag_run.conf
-    dag_run = kwargs.get('dag_run')
-    if dag_run and dag_run.conf and 'date' in dag_run.conf:
-        ds = dag_run.conf['date']
-        log(f"Using overridden date from UI: {ds}")
-    
-    # Parse date
-    date_obj = datetime.strptime(ds, "%Y-%m-%d")
-    year = date_obj.year
-    month = date_obj.month
-    day = date_obj.day
-    
-    base = "https://data.cityofnewyork.us/resource/tvpp-9vvx.json"
-    token = get_airflow_var("NYC_APP_TOKEN") # Optional
-    headers = {"X-App-Token": token} if token else {}
-    
-    # Query for events starting on this day
-    where = f"start_date_time between '{ds}T00:00:00.000' and '{ds}T23:59:59.999'"
-    params = {
-        "$select": "*",
-        "$where": where,
-        "$order": "start_date_time DESC",
-        "$limit": 50000
+    row = {
+        "latitude": data.get("latitude"),
+        "longitude": data.get("longitude"),
+        "generationtime_ms": data.get("generationtime_ms"),
+        "utc_offset_seconds": data.get("utc_offset_seconds"),
+        "timezone": data.get("timezone"),
+        "timezone_abbreviation": data.get("timezone_abbreviation"),
+        "elevation": data.get("elevation"),
+        "hourly_units": data.get("hourly_units"),
+        "hourly": data.get("hourly"),
+        "partition_date": date_obj.strftime("%Y-%m-%d")
     }
     
-    log(f"Fetching events for {ds}...")
-    response = requests.get(base, headers=headers, params=params)
-    response.raise_for_status()
-    data = response.json()
+    # Load to BigQuery using Client (better support for JSON columns)
+    table_id = f"{project}.raw.weather"
+    log(f"Loading weather data to {table_id}")
     
-    gcs_path = f"raw/events/year={year}/month={month:02d}/day={day:02d}/events_{ds}.json"
-    upload_string_to_gcs(project, bucket, json.dumps(data), gcs_path, mime_type="application/json")
+    credentials = get_credentials()
+    client = bigquery.Client(project=project, credentials=credentials)
+    
+    errors = client.insert_rows_json(table_id, [row])
+    if errors:
+        raise RuntimeError(f"BigQuery insert failed: {errors}")
+
 
 def ingest_zones(**kwargs):
     """Ingest taxi zone lookup table (static)."""
-    project, bucket = get_project_bucket()
+    project, _ = get_project_bucket()
     url = "https://d37ci6vzurychx.cloudfront.net/misc/taxi_zone_lookup.csv"
     
     log(f"Fetching taxi zones from {url}...")
-    response = requests.get(url)
-    response.raise_for_status()
-    content = response.text
+    df = pd.read_csv(url)
     
-    gcs_path = "raw/geo/taxi_zone_lookup.csv"
-    upload_string_to_gcs(project, bucket, content, gcs_path, mime_type="text/csv")
+    # Load to BigQuery (Replace since it's static)
+    table_id = f"{project}.raw.taxi_zones"
+    log(f"Loading {len(df)} zones to {table_id}")
+    to_gbq(df, table_id, project_id=project, if_exists='replace', credentials=get_credentials())

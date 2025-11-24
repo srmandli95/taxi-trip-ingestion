@@ -28,10 +28,10 @@ with DAG(
             python_callable=raw_ingest.ingest_weather,
         )
 
-        ingest_events_task = PythonOperator(
-            task_id="ingest_events",
-            python_callable=raw_ingest.ingest_events,
-        )
+        # ingest_events_task = PythonOperator(
+        #     task_id="ingest_events",
+        #     python_callable=raw_ingest.ingest_events,
+        # )
 
         ingest_zones_task = PythonOperator(
             task_id="ingest_zones",

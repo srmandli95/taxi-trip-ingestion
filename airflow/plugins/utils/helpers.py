@@ -8,8 +8,24 @@ import pyarrow.parquet as pq
 import logging 
 from airflow.models import Variable
 from airflow.providers.google.cloud.hooks.gcs import GCSHook
+from google.oauth2 import service_account
  
 # Helper functions for Airflow tasks
+
+def get_credentials():
+    key_path = "/usr/local/airflow/keys/gcp-sa.json"
+    if os.path.exists(key_path):
+        return service_account.Credentials.from_service_account_file(key_path)
+    return None
+
+def get_execution_date(ds: str, kwargs: dict) -> str:
+    """Get execution date, checking for override in dag_run.conf."""
+    dag_run = kwargs.get('dag_run')
+    if dag_run and dag_run.conf and 'date' in dag_run.conf:
+        override_date = dag_run.conf['date']
+        logging.info(f"Using overridden date from UI: {override_date}")
+        return override_date
+    return ds
 
 def get_airflow_var(key: str, default:str | None = None) -> str | None:
     """Prefer Airflow Variable. If not found, fall back to environment variable.

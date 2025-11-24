@@ -39,3 +39,17 @@ resource "google_storage_bucket_iam_member" "dataproc_write_stg_curated_gold" {
     expression  = "resource.name.startsWith('projects/_/buckets/${var.bucket_name}/objects/stg/') || resource.name.startsWith('projects/_/buckets/${var.bucket_name}/objects/curated/') || resource.name.startsWith('projects/_/buckets/${var.bucket_name}/objects/gold/')"
   }
 }
+
+# Grant BigQuery Data Editor role to Airflow service account
+resource "google_project_iam_member" "airflow_bq_editor" {
+  project = var.project_id
+  role    = "roles/bigquery.dataEditor"
+  member  = "serviceAccount:${google_service_account.airflow.email}"
+}
+
+# Grant BigQuery Job User role to Airflow service account
+resource "google_project_iam_member" "airflow_bq_job_user" {
+  project = var.project_id
+  role    = "roles/bigquery.jobUser"
+  member  = "serviceAccount:${google_service_account.airflow.email}"
+}
