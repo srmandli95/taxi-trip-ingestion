@@ -8,11 +8,15 @@ def get_logger() -> logging.Logger:
     module = inspect.getmodule(caller_frame[0])
     module_name = module.__name__ if module else "nyc_trips_pipeline"
 
-    retunr logging.getLogger(module_name)
+    return logging.getLogger(module_name)
 
 
 def log(msg: str, level: str = "INFO", **kwargs):
-    """Log a message with the specified level and additional context. """
+    """Log a message with the specified level and additional context. 
+    
+    Args:
+        msg (str): The message to log.
+    """
     
     logger = get_logger()
 
@@ -26,5 +30,5 @@ def log(msg: str, level: str = "INFO", **kwargs):
         logger.warning(msg)
     elif level == "ERROR":
         logger.error(msg)
-    else :
+    else:
         logger.info(msg)

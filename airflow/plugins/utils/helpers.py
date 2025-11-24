@@ -16,6 +16,8 @@ def get_airflow_var(key: str, default:str | None = None) -> str | None:
     Args:
         key (str): The key of the variable to retrieve.
         default (str | None): The default value to return if the variable is not found.
+    Returns:
+        str | None: The value of the variable, or default if not found.
     """
     try:
         val = Variable.get(key, default_var=None)
@@ -26,7 +28,10 @@ def get_airflow_var(key: str, default:str | None = None) -> str | None:
     return val
 
 def get_project_bucket() -> tuple[str, str]:
-    """Retrieve GCP project and bucket from Airflow Variables or env vars."""
+    """Retrieve GCP project and bucket from Airflow Variables or env vars.
+    Returns:
+        tuple[str, str]: (project, bucket)
+    """
 
     project = get_airflow_var("AIRFLOW_VAR_GCP_PROJECT")
     bucket = get_airflow_var("AIRFLOW_VAR_DATA_BUCKET")
@@ -41,6 +46,8 @@ def normalize_date(ds: str) -> str:
     """Convert date string to YYYY-MM-DD format.
     Args:
         ds (str): Date string in any parsable format.
+    Returns:
+        str: Date string in YYYY-MM-DD format.
     """
     date_obj = datetime.strptime(ds, "%Y-%m-%d")
     return date_obj.strftime("%Y-%m-%d")
@@ -56,6 +63,9 @@ def upload_parquet_to_gcs(project: str, bucket: str, df, path: str, gcp_conn_id:
         df: pandas DataFrame to upload.
         path (str): GCS object path.
         gcp_conn_id (str): Airflow GCP connection ID.
+    
+    Returns:
+        None
     """
 
     if df is None:
