@@ -37,7 +37,8 @@ resource "google_bigquery_table" "raw_yellow_trips" {
   {"name": "congestion_surcharge", "type": "FLOAT"},
   {"name": "airport_fee", "type": "FLOAT"},
   {"name": "cbd_congestion_fee", "type": "FLOAT"},
-  {"name": "partition_date", "type": "DATE"}
+  {"name": "partition_date", "type": "DATE"},
+  {"name": "ingestion_date", "type": "TIMESTAMP"}
 ]
 EOF
 }
@@ -79,7 +80,8 @@ resource "google_bigquery_table" "raw_weather" {
       {"name": "precipitation", "type": "FLOAT", "mode": "REPEATED"}
     ]
   },
-  {"name": "partition_date", "type": "DATE"}
+  {"name": "partition_date", "type": "DATE"},
+  {"name": "ingestion_date", "type": "TIMESTAMP"}
 ]
 EOF
 }
@@ -93,7 +95,8 @@ resource "google_bigquery_table" "raw_taxi_zones" {
   {"name": "LocationID", "type": "INTEGER"},
   {"name": "Borough", "type": "STRING"},
   {"name": "Zone", "type": "STRING"},
-  {"name": "service_zone", "type": "STRING"}
+  {"name": "service_zone", "type": "STRING"},
+  {"name": "ingestion_date", "type": "TIMESTAMP"}
 ]
 EOF
 }

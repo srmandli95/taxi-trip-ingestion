@@ -25,7 +25,7 @@ def get_execution_date(**kwargs) -> str:
     Returns:
         str: Date in YYYY-MM-DD format
     """
-    # Priority 1: Check for user override in DAG trigger config
+    
     dag_run = kwargs.get('dag_run')
     if dag_run and hasattr(dag_run, 'conf') and dag_run.conf:
         override_date = dag_run.conf.get('date')
@@ -33,20 +33,17 @@ def get_execution_date(**kwargs) -> str:
             log(f"Using overridden date from DAG config: {override_date}")
             return override_date
     
-    # Priority 2: Use Airflow's execution date (ds)
     ds = kwargs.get('ds')
     if ds:
         log(f"Using Airflow execution date (ds): {ds}")
         return ds
     
-    # Priority 3: Extract from execution_date datetime object
     execution_date = kwargs.get('execution_date')
     if execution_date:
         result = execution_date.strftime('%Y-%m-%d')
         log(f"Using execution_date datetime: {result}")
         return result
     
-    # Fallback: Use a default historical date (since we need historical taxi data)
     result = "2024-01-01"
     log(f"No date provided, using default historical date: {result}")
     return result
