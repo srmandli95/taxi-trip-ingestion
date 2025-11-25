@@ -10,18 +10,18 @@ from utils.helpers import get_project_bucket, get_airflow_var, get_credentials, 
 from utils.logger import log
 from pandas_gbq import to_gbq
 
-def ingest_trips(ds: str, **kwargs):
-
-    """Ingest NYC taxi trip data for the given date string (ds).
-    Args:
-        ds (str): Date string in YYYY-MM-DD format.
-    """
+def ingest_trips(**kwargs):
+    """Ingest NYC taxi trip data for the given date.
     
+    Args:
+        **kwargs: Airflow context (ds, dag_run, execution_date, etc.)
+    """
     project, _ = get_project_bucket()
     base_url = get_airflow_var("AIRFLOW_VAR_TRIPS_BASE_URL", "https://d37ci6vzurychx.cloudfront.net/trip-data")
     
-    # Check for override date in dag_run.conf
-    ds = get_execution_date(ds, kwargs)
+    # Get execution date (with override support)
+    ds = get_execution_date(**kwargs)
+    log(f"Processing trips for date: {ds}")
 
     # Parse date from ds
     date_obj = datetime.strptime(ds, "%Y-%m-%d")
@@ -44,14 +44,18 @@ def ingest_trips(ds: str, **kwargs):
     log(f"Loading {len(df)} rows to {table_id}")
     to_gbq(df, table_id, project_id=project, if_exists='append', credentials=get_credentials())
 
-def ingest_weather(ds: str, **kwargs):
-    """Ingest weather data for the given date."""
+def ingest_weather(**kwargs):
+    """Ingest weather data for the given date.
+    
+    Args:
+        **kwargs: Airflow context (ds, dag_run, execution_date, etc.)
+    """
     project, _ = get_project_bucket()
     
-
-    ds = get_execution_date(ds, kwargs)
+    # Get execution date (with override support)
+    ds = get_execution_date(**kwargs)
+    log(f"Processing weather for date: {ds}")
     
-   
     date_obj = datetime.strptime(ds, "%Y-%m-%d")
     
     

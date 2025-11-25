@@ -1,7 +1,0 @@
-Analysis Notes:
-  1. Identified the nulls across, columns like passenger_column, RatecodeID, store_and_fwd_flag, congestion_surcharge, Airport_fee. 
-  2. Identified the total_distance to be 0. However, we have a fare amount is a positive number for those records as well. 
-  3. Identifed the fare amount is less than 0
-  4. identified the fare is negative, for a positive trip_distance
-  5. We dont have a primary key, to filter out the dups.
-  6. 

@@ -5,27 +5,51 @@ from typing import Any
 
 import pyarrow as pa
 import pyarrow.parquet as pq
-import logging 
 from airflow.models import Variable
 from airflow.providers.google.cloud.hooks.gcs import GCSHook
 from google.oauth2 import service_account
+from utils.logger import log
  
-# Helper functions for Airflow tasks
-
 def get_credentials():
     key_path = "/usr/local/airflow/keys/gcp-sa.json"
     if os.path.exists(key_path):
         return service_account.Credentials.from_service_account_file(key_path)
     return None
 
-def get_execution_date(ds: str, kwargs: dict) -> str:
-    """Get execution date, checking for override in dag_run.conf."""
+def get_execution_date(**kwargs) -> str:
+    """Get execution date, checking for override in dag_run.conf.
+    
+    Args:
+        **kwargs: Airflow context containing ds, dag_run, execution_date, etc.
+    
+    Returns:
+        str: Date in YYYY-MM-DD format
+    """
+    # Priority 1: Check for user override in DAG trigger config
     dag_run = kwargs.get('dag_run')
-    if dag_run and dag_run.conf and 'date' in dag_run.conf:
-        override_date = dag_run.conf['date']
-        logging.info(f"Using overridden date from UI: {override_date}")
-        return override_date
-    return ds
+    if dag_run and hasattr(dag_run, 'conf') and dag_run.conf:
+        override_date = dag_run.conf.get('date')
+        if override_date:
+            log(f"Using overridden date from DAG config: {override_date}")
+            return override_date
+    
+    # Priority 2: Use Airflow's execution date (ds)
+    ds = kwargs.get('ds')
+    if ds:
+        log(f"Using Airflow execution date (ds): {ds}")
+        return ds
+    
+    # Priority 3: Extract from execution_date datetime object
+    execution_date = kwargs.get('execution_date')
+    if execution_date:
+        result = execution_date.strftime('%Y-%m-%d')
+        log(f"Using execution_date datetime: {result}")
+        return result
+    
+    # Fallback: Use a default historical date (since we need historical taxi data)
+    result = "2024-01-01"
+    log(f"No date provided, using default historical date: {result}")
+    return result
 
 def get_airflow_var(key: str, default:str | None = None) -> str | None:
     """Prefer Airflow Variable. If not found, fall back to environment variable.
