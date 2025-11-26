@@ -52,4 +52,5 @@ with DAG(
             }
         )
 
+    ingest_group >> dq_group
 
