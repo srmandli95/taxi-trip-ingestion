@@ -3,7 +3,7 @@ from datetime import datetime
 from pyspark.sql import SparkSession
 from pyspark.sql import functions as F
 from pyspark.sql.types import StructType, StructField, StringType, IntegerType
-from utils.logger import log
+#from utils.logger import log
 
 def validate_trips(spark: SparkSession, project_id: str, execution_date: str) -> None:
     """Perform data quality validation on the trips data for the given execution date.
@@ -19,7 +19,7 @@ def validate_trips(spark: SparkSession, project_id: str, execution_date: str) ->
         .load() \
         .filter(F.col("partition_date") == execution_date)
 
-    log(f"Processing {trips_df.count()} rows for date :{execution_date}")
+    print(f"Processing {trips_df.count()} rows for date :{execution_date}")
 
 
     df = trips_df.withColumn("dq_failures", F.array().cast("array<string>"))
@@ -83,18 +83,19 @@ def validate_trips(spark: SparkSession, project_id: str, execution_date: str) ->
 
 
     df.withColumn("dq_failures",
-        F.when(
-            (F.col("PULocationID").isNull() | F.col(DOLocationID) <=0) |
-            (F.col("DOLactionID").isNull() | F.col(DOLocationID) <=0),
-            F.array_union(F.col("bq_failures"), F.array(F.lit("Invalid pickup/dropoff location ID (<=0 or NULL)")))
-        ).otherwise(F.col("dw_failures")
-    )
+        F.when
+            (
+                (F.col("PULocationID").isNull() | F.col(DOLocationID) <=0) |
+                (F.col("DOLactionID").isNull() | F.col(DOLocationID) <=0),
+                F.array_union(F.col("bq_failures"), F.array(F.lit("Invalid pickup/dropoff location ID (<=0 or NULL)")))
+            ).otherwise(F.col("dw_failures"))
+        )
 
     clean_df = df.filter(F.size(F.col("dq_failures")) == 0)
 
     quarentined_df = df.filter(F.size(F.col("dq_failures")) > 0)
 
-    log(f"valid rows: {clean_df.count()}, invalid rows: {quarentined_df.count()}")
+    print(f"valid rows: {clean_df.count()}, invalid rows: {quarentined_df.count()}")
 
     return clean_df, quarentined_df
 
@@ -109,7 +110,7 @@ def write_quartine_records(quartine_df, source_table, project_id):
     """
 
     if quarentined_df.count() == 0:
-        log("No quarentined records to write.")
+        print("No quarentined records to write.")
         return
 
     quarentine_output = quarentine_df.select(
@@ -125,14 +126,14 @@ def write_quartine_records(quartine_df, source_table, project_id):
         .mode("append") \
         .save()
 
-    log(f"Wrote {quarentine_output.count() } quarentined records to {project_id}.quarentine.dq_failures")
+    print(f"Wrote {quarentine_output.count() } quarentined records to {project_id}.quarentine.dq_failures")
 
 
 
 
 def main():
     if len(sys.argv) !=3:
-        log("Usage: dq_validation.py <project_id> <execution_date(YYYY-MM-DD)")
+        print("Usage: dq_validation.py <project_id> <execution_date(YYYY-MM-DD)")
         sys.exit(1)
 
     project_id = sys.argv[1]
@@ -144,9 +145,9 @@ def main():
 
     spark.conf.set("materializationDataset", f"{project_id}.ops")
 
-    log(f"Starting DQ validation for date: {execution_date} in project: {project_id}")
+    print(f"Starting DQ validation for date: {execution_date} in project: {project_id}")
 
-    log("=== Starting DQ Validation trips data ===")
+    print("=== Starting DQ Validation trips data ===")
 
     clean_trips_df, quarentined_trips_df = validate_trips(spark, project_id, execution_date)
 

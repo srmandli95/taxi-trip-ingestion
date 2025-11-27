@@ -53,3 +53,37 @@ resource "google_project_iam_member" "airflow_bq_job_user" {
   role    = "roles/bigquery.jobUser"
   member  = "serviceAccount:${google_service_account.airflow.email}"
 }
+
+resource "google_project_iam_member" "airflow_dataproc_editor" {
+  project = var.project_id
+  role    = "roles/dataproc.editor"
+  member  = "serviceAccount:${google_service_account.airflow.email}"
+}
+
+resource "google_service_account_iam_member" "airflow_can_use_dataproc_runtime" {
+  service_account_id = google_service_account.dataproc.name
+  role               = "roles/iam.serviceAccountUser"
+  member             = "serviceAccount:${google_service_account.airflow.email}"
+}
+
+# Dataproc runtime service account needs Dataproc Worker role
+resource "google_project_iam_member" "dataproc_runtime_worker" {
+  project = var.project_id
+  role    = "roles/dataproc.worker"
+  member  = "serviceAccount:${google_service_account.dataproc.email}"
+}
+
+
+# Dataproc: BigQuery data editor
+resource "google_project_iam_member" "dataproc_bq_editor" {
+  project = var.project_id
+  role    = "roles/bigquery.dataEditor"
+  member  = "serviceAccount:${google_service_account.dataproc.email}"
+}
+
+# Dataproc: BigQuery job user
+resource "google_project_iam_member" "dataproc_bq_job_user" {
+  project = var.project_id
+  role    = "roles/bigquery.jobUser"
+  member  = "serviceAccount:${google_service_account.dataproc.email}"
+}

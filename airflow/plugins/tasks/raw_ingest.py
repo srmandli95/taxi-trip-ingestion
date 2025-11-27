@@ -19,11 +19,11 @@ def ingest_trips(**kwargs):
     project, _ = get_project_bucket()
     base_url = get_airflow_var("AIRFLOW_VAR_TRIPS_BASE_URL", "https://d37ci6vzurychx.cloudfront.net/trip-data")
     
-    
+    # Get execution date (with override support)
     ds = get_execution_date(**kwargs)
     log(f"Processing trips for date: {ds}")
 
- 
+    # Parse date from ds
     date_obj = datetime.strptime(ds, "%Y-%m-%d")
     ym_label = date_obj.strftime("%Y-%m")
     
@@ -31,15 +31,18 @@ def ingest_trips(**kwargs):
     log(f"Downloading data from {url}")
     df = pd.read_parquet(url, engine="pyarrow")
 
+    # Filter for the specific day
     log(f"Filtering data for date: {ds}")
     df = df[df['tpep_pickup_datetime'].dt.date == date_obj.date()]
     log(f"Rows for {ds}: {len(df)}")
 
+    # Add partition_date column
     df['partition_date'] = date_obj.date()
     
+    # Add ingestion_date metadata
     df['ingestion_date'] = datetime.now()
 
-    
+    # Load to BigQuery
     table_id = f"{project}.raw.yellow_trips"
     log(f"Loading {len(df)} rows to {table_id}")
     to_gbq(df, table_id, project_id=project, if_exists='append', credentials=get_credentials())
@@ -52,7 +55,7 @@ def ingest_weather(**kwargs):
     """
     project, _ = get_project_bucket()
     
-    
+    # Get execution date (with override support)
     ds = get_execution_date(**kwargs)
     log(f"Processing weather for date: {ds}")
     
@@ -91,7 +94,7 @@ def ingest_weather(**kwargs):
         "ingestion_date": datetime.now().isoformat()
     }
     
-    
+    # Load to BigQuery using Client (better support for JSON columns)
     table_id = f"{project}.raw.weather"
     log(f"Loading weather data to {table_id}")
     
@@ -106,13 +109,15 @@ def ingest_weather(**kwargs):
 def ingest_zones(**kwargs):
     """Ingest taxi zone lookup table (static)."""
     project, _ = get_project_bucket()
-    url = "hta/misc/taxi_zone_lookup.csv"
+    url = "https://d37ci6vzurychx.cloudfront.net/misc/taxi_zone_lookup.csv"
     
     log(f"Fetching taxi zones from {url}...")
     df = pd.read_csv(url)
     
+    # Add ingestion_date metadata
     df['ingestion_date'] = datetime.now()
     
+    # Load to BigQuery (Replace since it's static)
     table_id = f"{project}.raw.taxi_zones"
     log(f"Loading {len(df)} zones to {table_id}")
     to_gbq(df, table_id, project_id=project, if_exists='replace', credentials=get_credentials())
