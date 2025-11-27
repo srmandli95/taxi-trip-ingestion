@@ -40,3 +40,6 @@ crash.log
 
 # GCP Service Account Keys
 /airflow/include/keys/*.json
+
+# Packaged plugins
+/airflow/plugins/dq_utils.zip
