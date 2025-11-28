@@ -133,6 +133,8 @@ resource "google_bigquery_table" "dq_failures" {
   dataset_id = google_bigquery_dataset.quarantine.dataset_id
   table_id   = "dq_failures"
 
+  deletion_protection = false
+
   time_partitioning {
     type  = "DAY"
     field = "ingestion_date"
@@ -142,7 +144,7 @@ resource "google_bigquery_table" "dq_failures" {
 [
   {"name": "source_table", "type": "STRING"},
   {"name": "failure_reason", "type": "STRING"},
-  {"name": "record_content", "type": "JSON"},
+  {"name": "record_content", "type": "STRING"},
   {"name": "ingestion_date", "type": "DATE"},
   {"name": "ingestion_timestamp", "type": "TIMESTAMP"}
 ]

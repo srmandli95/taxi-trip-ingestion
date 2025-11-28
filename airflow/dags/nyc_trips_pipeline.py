@@ -49,6 +49,30 @@ with DAG(
                     "args": [
                         project_id,
                         "{{ ds }}",
+                        "validate_trips"
+                    ],
+                },
+                "environment_config": {
+                    "execution_config": {
+                        "service_account": get_airflow_var("AIRFLOW_VAR_DATAPROC_RUNTIME_SA"),
+                    }
+                },
+            },
+        )
+
+        validate_weather_task = DataprocCreateBatchOperator(
+            task_id="validate_weather_dq",
+            project_id=project_id,
+            region="us-central1",
+            batch_id="validate-weather-dq-{{ ts_nodash | lower }}-{{ task_instance.try_number }}",
+            batch={
+                "pyspark_batch": {
+                    "main_python_file_uri": f"gs://{bucket}/code/tasks/dq_validation.py",
+                    #"python_file_uris": [f"gs://{bucket}/code/deps/dq_utils.zip"],
+                    "args": [
+                        project_id,
+                        "{{ ds }}",
+                        "validate_weather"
                     ],
                 },
                 "environment_config": {
@@ -61,6 +85,5 @@ with DAG(
 
 
 
-
-    ingest_group >> dq_group
+    ingest_group >> validate_trips_task >> validate_weather_task
 

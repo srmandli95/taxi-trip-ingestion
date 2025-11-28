@@ -52,31 +52,6 @@ def validate_trips(spark: SparkSession, project_id: str, execution_date: str):
         ).otherwise(F.col("dq_failures")),
     )
 
-    # Rule 3: Fare components vs total_amount
-    df = df.withColumn(
-        "aggregated_charge",
-        F.coalesce(F.col("extra"), F.lit(0))
-        + F.coalesce(F.col("mta_tax"), F.lit(0))
-        + F.coalesce(F.col("tolls_amount"), F.lit(0))
-        + F.coalesce(F.col("improvement_surcharge"), F.lit(0))
-        + F.coalesce(F.col("congestion_surcharge"), F.lit(0))
-        + F.coalesce(F.col("airport_fee"), F.lit(0))
-        + F.coalesce(F.col("cbd_congestion_fee"), F.lit(0))
-        + F.coalesce(F.col("fare_amount"), F.lit(0)),
-    )
-
-    df = df.withColumn(
-        "dq_failures",
-        F.when(
-            F.abs(F.coalesce(F.col("total_amount"), F.lit(0)))
-            != F.abs(F.col("aggregated_charge")),
-            F.array_union(
-                F.col("dq_failures"),
-                F.array(F.lit("Fare amount mismatch with total amount")),
-            ),
-        ).otherwise(F.col("dq_failures")),
-    ).drop("aggregated_charge")
-
     # Rule 4: Invalid trip distance (<0 or NULL or == 0)
     df = df.withColumn(
         "dq_failures",
@@ -144,7 +119,7 @@ def validate_trips(spark: SparkSession, project_id: str, execution_date: str):
     )
 
     # Split clean vs quarantined
-    clean_df = df.filter(F.size(F.col("dq_failures")) == 0)
+    clean_df = df.filter(F.size(F.col("dq_failures")) == 0).drop("dq_failures")
     quarantined_df = df.filter(F.size(F.col("dq_failures")) > 0)
 
     print(
@@ -152,6 +127,89 @@ def validate_trips(spark: SparkSession, project_id: str, execution_date: str):
     )
 
     return clean_df, quarantined_df
+
+def validate_weather(spark: SparkSession, project_id: str, execution_date: str):
+    """Perform data quality validation on the weather data for the given execution date.
+
+    Args:
+        spark (SparkSession): The Spark session.
+        project_id (str): GCP project ID.
+        execution_date (str): Execution date in YYYY-MM-DD format.
+    """
+    # Load weather data from BigQuery for the given partition_date
+    weather_df = (
+        spark.read.format("bigquery")
+        .option("table", f"{project_id}.raw.weather")
+        .load()
+        .filter(F.col("partition_date") >= execution_date)
+    )
+
+    print(f"Processing {weather_df.count()} rows for date: {execution_date}")
+
+    # Start with an array<string> dq_failures column
+    df = weather_df.withColumn("dq_failures", F.array().cast("array<string>"))
+
+    # Rule 1: Missing latitude/longitude or out of bounds
+    df = df.withColumn(
+    "dq_failures",
+    F.when(
+        F.col("latitude").isNull()
+        | F.col("longitude").isNull()
+        | (F.col("latitude") < -90)
+        | (F.col("latitude") > 90)
+        | (F.col("longitude") < -180)
+        | (F.col("longitude") > 180),
+        F.array_union(
+            F.col("dq_failures"),
+            F.array(F.lit("Invalid or missing latitude/longitude")),
+        ),
+    ).otherwise(F.col("dq_failures")),
+    )
+
+    # Rule 2: Missing timezone
+    df = df.withColumn(
+        "dq_failures",
+        F.when(
+            F.col("timezone").isNull() | (F.col("timezone") == ""),
+            F.array_union(
+                F.col("dq_failures"),
+                F.array(F.lit("Missing timezone")),
+            ),
+        ).otherwise(F.col("dq_failures")),
+    )
+
+    # Rule 3: Temperature out of expected range (-60, 60)
+    df = df.withColumn(
+        "dq_failures",
+        F.when(
+            F.expr(
+                "EXISTS(hourly.temperature_2m, x -> x < -60 OR x > 60)"
+            ),
+            F.array_union(
+                F.col("dq_failures"),
+                F.array(F.lit("Temperature out of expected range (-60, 60)")),
+            ),
+        ).otherwise(F.col("dq_failures")),
+    )
+
+    # Rule 4: Non-Negative precipitation values
+    df = df.withColumn(
+        "dq_failures",
+        F.when(
+            F.expr(
+                "EXISTS(hourly.precipitation, x -> x < 0)"
+            ),
+            F.array_union(
+                F.col("dq_failures"),
+                F.array(F.lit("Negative precipitation value")),
+            ),
+        ).otherwise(F.col("dq_failures")),
+    )
+
+    clean_weather_df = df.filter(F.size("dq_failures") == 0).drop("dq_failures")
+    quarantined_weather_df = df.filter(F.size("dq_failures") > 0)
+
+    return clean_weather_df, quarantined_weather_df
 
 
 def write_quarantine_records(quarantine_df, source_table, project_id: str):
@@ -165,7 +223,7 @@ def write_quarantine_records(quarantine_df, source_table, project_id: str):
         F.lit(source_table).alias("source_table"),
         F.concat_ws("; ", F.col("dq_failures")).alias("failure_reason"),
         F.current_timestamp().alias("ingestion_timestamp"),
-        F.struct("*").alias("record_content"),
+        F.to_json(F.struct("*")).alias("record_content"),
         F.col("partition_date").alias("ingestion_date"),
     )
 
@@ -183,32 +241,38 @@ def write_quarantine_records(quarantine_df, source_table, project_id: str):
 
 
 def main():
-    # For now, hard-code the project and execution date for testing
-    project_id = "nyc-analytics-dev-477913"
-    execution_date = "2025-01-01"
+    if len(sys.argv) != 4:
+        raise ValueError(
+            "Usage: dq_validation.py <project_id> <execution_date> <task_name>"
+        )
+
+    project_id = sys.argv[1]
+    execution_date = "2025-01-01" # sys.argv[2]
+    task_name = sys.argv[3]
 
     spark = (
-        SparkSession.builder.appName(f"DQ Validation - {execution_date}")
+        SparkSession.builder.appName(f"DQ Validation - {task_name} - {execution_date}")
         .getOrCreate()
     )
-
-    # Materialization dataset for temporary BQ objects used by the connector
     spark.conf.set("materializationDataset", f"{project_id}.ops")
 
     print(
-        f"Starting DQ validation for date: {execution_date} in project: {project_id}"
-    )
-    print("=== Starting DQ Validation trips data ===")
-
-    clean_trips_df, quarantined_trips_df = validate_trips(
-        spark, project_id, execution_date
+        f"Starting DQ validation task={task_name} date={execution_date} project={project_id}"
     )
 
-    # Optionally persist quarantined records
-    write_quarantine_records(
-        quarantined_trips_df, "raw.yellow_trips", project_id
-    )
+    if task_name == "validate_trips":
+        clean_df, quarantined_df = validate_trips(spark, project_id, execution_date)
+        source_table = "raw.yellow_trips"
+    elif task_name == "validate_weather":
+        clean_df, quarantined_df = validate_weather(spark, project_id, execution_date)
+        source_table = "raw.weather"
+    elif task_name == "validate_zones":
+        clean_df, quarantined_df = validate_zones(spark, project_id, execution_date)
+        source_table = "raw.taxi_zones"
+    else:
+        raise ValueError(f"Unknown task_name: {task_name}")
 
+    write_quarantine_records(quarantined_df, source_table, project_id)
     spark.stop()
 
 
