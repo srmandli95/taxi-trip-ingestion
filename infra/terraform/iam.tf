@@ -87,3 +87,10 @@ resource "google_project_iam_member" "dataproc_bq_job_user" {
   role    = "roles/bigquery.jobUser"
   member  = "serviceAccount:${google_service_account.dataproc.email}"
 }
+
+# Dataproc: allow creating BigQuery read sessions (for Storage Read API)
+resource "google_project_iam_member" "dataproc_bq_read_session_user" {
+  project = var.project_id
+  role    = "roles/bigquery.readSessionUser"
+  member  = "serviceAccount:${google_service_account.dataproc.email}"
+}
