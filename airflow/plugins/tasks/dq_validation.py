@@ -275,7 +275,7 @@ def write_quarantine_records(quarantine_df, source_table: str, project_id: str):
 
     cols = quarantine_df.columns
 
-    # Pick the right ingestion date column and cast to DATE
+    
     if "partition_date" in cols:
         ingestion_col = F.col("partition_date").cast("date")
     elif "ingestion_date" in cols:
@@ -283,7 +283,7 @@ def write_quarantine_records(quarantine_df, source_table: str, project_id: str):
     else:
         ingestion_col = F.lit(None).cast("date")
 
-    # Build final output
+    
     quarantine_output = quarantine_df.select(
         F.lit(source_table).alias("source_table"),
         F.concat_ws("; ", F.col("dq_failures")).alias("failure_reason"),
@@ -293,7 +293,7 @@ def write_quarantine_records(quarantine_df, source_table: str, project_id: str):
                 *[F.col(c) for c in cols if c != "dq_failures"]
             )
         ).alias("record_content"),
-        ingestion_col.alias("ingestion_date"),  # must be DATE now
+        ingestion_col.alias("ingestion_date"),  
     )
 
     (
