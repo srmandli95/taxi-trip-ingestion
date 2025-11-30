@@ -211,27 +211,96 @@ def validate_weather(spark: SparkSession, project_id: str, execution_date: str):
 
     return clean_weather_df, quarantined_weather_df
 
+def validate_zones(spark: SparkSession, project_id: str, execution_date: str):
+    """Perform data quality validation on the taxi zones data.
 
-def write_quarantine_records(quarantine_df, source_table, project_id: str):
+    Args:
+        spark (SparkSession): The Spark session.
+        project_id (str): GCP project ID.
+        execution_date (str): Execution date in YYYY-MM-DD format.
+    """
+    # Load taxi zones data from BigQuery
+    zones_df = (
+        spark.read.format("bigquery")
+        .option("table", f"{project_id}.raw.taxi_zones")
+        .load()
+    )
+
+    print(f"Processing {zones_df.count()} rows for taxi zones")
+
+    # Start with an array<string> dq_failures column
+    df = zones_df.withColumn("dq_failures", F.array().cast("array<string>"))
+
+    # Rule 1: Missing LocationID
+    df = df.withColumn(
+        "dq_failures",
+        F.when(
+            F.col("LocationID").isNull() | (F.col("LocationID") <= 0),
+            F.array_union(
+                F.col("dq_failures"),
+                F.array(F.lit("Missing or invalid LocationID")),
+            ),
+        ).otherwise(F.col("dq_failures")),
+    )
+
+    # Rule 2: Missing Borough or Zone
+    df = df.withColumn(
+        "dq_failures",
+        F.when(
+            F.col("Borough").isNull() | (F.col("Borough") == "") |
+            F.col("Zone").isNull() | (F.col("Zone") == ""),
+            F.array_union(
+                F.col("dq_failures"),
+                F.array(F.lit("Missing Borough or Zone")),
+            ),
+        ).otherwise(F.col("dq_failures")),
+    )
+
+    # Split clean vs quarantined
+    clean_df = df.filter(F.size("dq_failures") == 0).drop("dq_failures")
+    quarantined_df = df.filter(F.size("dq_failures") > 0)
+
+    print(
+        f"valid zone rows: {clean_df.count()}, invalid zone rows: {quarantined_df.count()}"
+    )
+
+    return clean_df, quarantined_df
+
+def write_quarantine_records(quarantine_df, source_table: str, project_id: str):
     """Write quarantined records to BigQuery quarantine.dq_failures table."""
 
-    if quarantine_df.count() == 0:
+    if quarantine_df is None or quarantine_df.rdd.isEmpty():
         print("No quarantined records to write.")
         return
 
+    cols = quarantine_df.columns
+
+    # Pick the right ingestion date column and cast to DATE
+    if "partition_date" in cols:
+        ingestion_col = F.col("partition_date").cast("date")
+    elif "ingestion_date" in cols:
+        ingestion_col = F.col("ingestion_date").cast("date")
+    else:
+        ingestion_col = F.lit(None).cast("date")
+
+    # Build final output
     quarantine_output = quarantine_df.select(
         F.lit(source_table).alias("source_table"),
         F.concat_ws("; ", F.col("dq_failures")).alias("failure_reason"),
         F.current_timestamp().alias("ingestion_timestamp"),
-        F.to_json(F.struct("*")).alias("record_content"),
-        F.col("partition_date").alias("ingestion_date"),
+        F.to_json(
+            F.struct(
+                *[F.col(c) for c in cols if c != "dq_failures"]
+            )
+        ).alias("record_content"),
+        ingestion_col.alias("ingestion_date"),  # must be DATE now
     )
 
     (
-        quarantine_output.write.format("bigquery") \
-        .option("table", f"{project_id}.quarantine.dq_failures") \
-        .option("temporaryGcsBucket", "nyc-analytics-dev-data") \
-        .mode("append") \
+        quarantine_output.write.format("bigquery")
+        .option("table", f"{project_id}.quarantine.dq_failures")
+        .option("temporaryGcsBucket", "nyc-analytics-dev-data")
+        .mode("append")
         .save()
     )
 

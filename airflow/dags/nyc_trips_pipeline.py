@@ -83,7 +83,30 @@ with DAG(
             },
         )
 
+        validate_zones_task = DataprocCreateBatchOperator(
+            task_id="validate_zones_dq",
+            project_id=project_id,
+            region="us-central1",
+            batch_id="validate-zones-dq-{{ ts_nodash | lower }}-{{ task_instance.try_number }}",
+            batch={
+                "pyspark_batch": {
+                    "main_python_file_uri": f"gs://{bucket}/code/tasks/dq_validation.py",
+                    #"python_file_uris": [f"gs://{bucket}/code/deps/dq_utils.zip"],
+                    "args": [
+                        project_id,
+                        "{{ ds }}",
+                        "validate_zones"
+                    ],
+                },
+                "environment_config": {
+                    "execution_config": {
+                        "service_account": get_airflow_var("AIRFLOW_VAR_DATAPROC_RUNTIME_SA"),
+                    }
+                },
+            },
+        )
 
 
-    ingest_group >> validate_trips_task >> validate_weather_task
+
+    ingest_group >> validate_trips_task >> validate_weather_task >> validate_zones_task
 
