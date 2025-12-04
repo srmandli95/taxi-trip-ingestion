@@ -8,6 +8,7 @@ import pyarrow.parquet as pq
 from airflow.models import Variable
 from airflow.providers.google.cloud.hooks.gcs import GCSHook
 from google.oauth2 import service_account
+from google.cloud import bigquery
 from utils.logger import log
  
 def get_credentials():
@@ -142,5 +143,74 @@ def upload_string_to_gcs(project: str, bucket: str, content: str, path: str, mim
     )
 
 
+def check_and_reset_partition(
+    project_id: str,
+    dataset:str,
+    table:str,
+    partition_date: str,
+    expected_count: int,
+) -> bool:
+    """Check if a partition has expected row count; if not, delete the partition.
+    
+    Args:
+        project_id (str): GCP project ID.
+        dataset (str): BigQuery dataset name.
+        table (str): BigQuery table name.
+        partition_date (str): Partition date in YYYY-MM-DD format.
+        expected_count (int): Expected number of rows in the partition.
+    
+    Returns:
+        bool: True if partition was reset (deleted), False otherwise.
+    """
+    credentials = get_credentials()
+    if not credentials:
+        raise RuntimeError("GCP credentials not found. Check that /usr/local/airflow/keys/gcp-sa.json exists.")
+    client = bigquery.Client(project=project_id, credentials=credentials)
+    table_id = f"{project_id}.{dataset}.{table}"
+    
+    
+    # 1) Count existing
+    count_query = f"""
+        SELECT COUNT(*) AS c
+        FROM {table_id}
+        WHERE partition_date = DATE(@partition_date)
+    """
+    count_job = client.query(
+        count_query,
+        job_config=bigquery.QueryJobConfig(
+            query_parameters=[
+                bigquery.ScalarQueryParameter("partition_date", "DATE", partition_date)
+            ]
+        ),
+    )
+    existing_count = list(count_job.result())[0]["c"]
 
+    if existing_count == expected_count and existing_count > 0:
+        # Data is already fully loaded; skip ingest
+        return False
 
+    if existing_count > 0:
+        # 2) Delete existing rows for that day
+        delete_query = f"""
+            DELETE FROM {table_id}
+            WHERE partition_date = DATE(@partition_date)
+        """
+        try:
+            client.query(
+                delete_query,
+                job_config=bigquery.QueryJobConfig(
+                    query_parameters=[
+                        bigquery.ScalarQueryParameter("partition_date", "DATE", partition_date)
+                    ]
+                ),
+            ).result()
+        except Exception as e:
+            # Handle streaming buffer error (common with insert_rows_json)
+            if "streaming buffer" in str(e).lower():
+                log(f"Warning: Cannot delete from streaming buffer for {table_id}. "
+                    f"Skipping delete, will append (may create duplicates if rerun within 90 min).")
+                return True
+            raise
+
+    # Need to (re)ingest
+    return True

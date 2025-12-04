@@ -6,7 +6,7 @@ from datetime import datetime
 from google.oauth2 import service_account
 from google.cloud import bigquery
 
-from utils.helpers import get_project_bucket, get_airflow_var, get_credentials, get_execution_date
+from utils.helpers import get_project_bucket, get_airflow_var, get_credentials, get_execution_date, check_and_reset_partition
 from utils.logger import log
 from pandas_gbq import to_gbq
 
@@ -34,7 +34,22 @@ def ingest_trips(**kwargs):
     # Filter for the specific day
     log(f"Filtering data for date: {ds}")
     df = df[df['tpep_pickup_datetime'].dt.date == date_obj.date()]
-    log(f"Rows for {ds}: {len(df)}")
+    expected_count = len(df)
+    log(f"Rows for {ds}: {expected_count}")
+
+    table_id = f"{project}.raw.yellow_trips"
+    if not check_and_reset_partition(
+        project_id=project,
+        dataset="raw",
+        table="yellow_trips",
+        partition_date=ds,
+        expected_count=expected_count,
+    ):
+        log(
+            f"Skipping trips ingest for {ds}: "
+            f"existing partition has matching row count ({expected_count})."
+        )
+        return
 
     # Add partition_date column
     df['partition_date'] = date_obj.date()
@@ -78,6 +93,23 @@ def ingest_weather(**kwargs):
     response = requests.get(url, params=params)
     response.raise_for_status()
     data = response.json()
+
+    # We always get exactly one row for that day from this API
+    expected_count = 1
+
+    table_id = f"{project}.raw.weather"
+    if not check_and_reset_partition(
+        project_id=project,
+        dataset="raw",
+        table="weather",
+        partition_date=ds,
+        expected_count=expected_count,
+    ):
+        log(
+            f"Skipping weather ingest for {ds}: "
+            f"existing partition has matching row count ({expected_count})."
+        )
+        return
     
     
     row = {
